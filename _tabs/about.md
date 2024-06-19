@@ -4,5 +4,9 @@ icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
-{: .prompt-tip }
+**Daemin Park**
+> E-mail : eoalsqkr12@snu.ac.kr<br>
+> [DSAIL](https://data.snu.ac.kr/) @Seoul National Univ. EE, Seoul, South Korea<br>
+> Artificial intelligence, Deep learning, Computer Vison, Generative Models<br>
+
+

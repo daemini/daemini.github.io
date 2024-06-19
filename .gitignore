@@ -23,5 +23,4 @@ package-lock.json
 !.vscode/extensions.json
 
 # Misc
-_sass/dist
-assets/js/dist
+Gemfile.lock
