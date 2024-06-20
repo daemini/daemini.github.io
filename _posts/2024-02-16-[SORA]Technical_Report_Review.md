@@ -1,5 +1,21 @@
-﻿
+﻿---
+title: SORA, Technical Report Review
+description: OpenAI의 SORA 발표 이후, 간단히 공부한 내용입니다.
+toc: true
+comments: true
+pin : true
+# layout: default
+date: 2024-02-16 13:17:00 +09:00
+categories: [DeepLearning, Generative Model]
+tags: [generative model, computer vison, sora]     # TAG names should always be lowercase
+image: posts/SORA/Thumbnail.png
+alt : Demo Image
+---
+
+
+
 # SORA, OpenAI
+
 
 **OpenAI**에서 5시간 전에(Feb 16, 2024) 나온 [SORA](https://openai.com/index/sora/)라고 하는 **text-to-video model** 을 공개했습니다.
 
@@ -28,6 +44,8 @@ OpenAI에서 공개한 Sora는 visual data의 generalist 한 모델로 동영상
 
 ##  Turning visual data into patches
 
+![Model Architecture](posts/SORA/model_architecture.png)
+
 저자들은 internet-scale data로 training 함으로써 높은 일반화 성능을 가진 Large language model(LLM)에서 영감을 받았다고 합니다. LLM들이 **token**을 갖는 것처럼, Sora는 **visual patch**를 갖습니다. 
 
 Patch는 visual data에서 효과적인 표현으로 선행 연구들이 있었으며, 저자들은 patch가 다양한 비디오나 이미지를 만드는 데 **highly-scalable and effective representation** 하다고 합니다.
@@ -46,6 +64,8 @@ Latent vector로부터, Transformer의 token으로 사용되는 **spacetime patc
 
 ## Scaling transformers for video generation
 
+![Training](posts/SORA/training_example.png)
+
 Sora는 기본적으로 **diffusion model**입니다. 주어진 noisy patch로부터 original clean patch를 예측하도록 학습됩니다. 
 특히 저자들은, SORA가 diffusion model중에서 transformer 구조를 갖는 **diffusion transformer**라 강조합니다. 
 
@@ -58,17 +78,29 @@ Transformer는 scaling property(모델 사이즈가 커짐에따라 성능이 �
 이미지나 비디오 생성에서 이전 연구들의 접근법에서 standard size (e.g. 4 second, 256X256 resolution)로 resize, crop, trim 등을 수행했지만, 이번 연구에서 저자들은 **data의 native size**를 사용하는 것이 여러 이점을 제공한다고 합니다.
 
 ### Sampling flexibility
+![sampling_flexibility](posts/SORA/sampling_flexibility.png)
 SORA는 1920X1080부터, 1080X192(vertical) 사이에 있는 모든 resolution을 갖는 비디오를 생성할 수 있습니다. 이를 통해 Sora는 각 device의 native AR로 contents를 만들 수 있는 이점을 제공합니다.
 
 ### Improved framing and composition
 저자들은 경험적으로 native AR을 사용했을 때, **composition, framing**이 향상됨을 확인했다고 합니다.
 
+## Language understanding
+Text-to-video model을 학습시키기 위해서는 매우 많은 양의 text captioning된 비디오가 필요하다. 저자들은 DALL·E 3에서 사용된 **re-captioning technique**을 적용했다고 한다. 
+
+먼저 highly descriptive captioner model을 train 하고 이를 사용해 training에 사용되는 text caption을 만드는데 사용했다고 한다. 저자들은 highly descriptive caption이 **text fidelity**와 더불어 전반적인 비디오 **quality**를 올리는데 기여했다고 한다.
+
+![Language_understanding](posts/SORA/Language_understanding.png)
+
 ## Prompting with images and videos
+
+![Prompting](posts/SORA/Prompting.png)
 
 SORA의 재밌는 점은 Text-to-video뿐만 아니라, Sora는 image나 **video를 input prompt**로 사용할 수 있습니다. 
 아래 예시는 DALL · E 2, DALL·E 3로 만들어진 이미지를 동영상으로 만든 것입니다.
 
 혹은 **비디오를 입력**으로 받아 디테일을 수정하거나, 동영상 앞뒤로 길이를 늘리는 작업도 가능하며, 비디오 간의 interpolation도 가능하다고 합니다.
+
+![Prompting](posts/SORA/video_interpolation.png)
 
 ## Emerging simulation capabilities
 
@@ -86,14 +118,20 @@ SORA는 카메라의 dynamic camera motion을 생성할 수 있습니다. 카메
 
 ### Interacting with the world.
 
-
 화가가 캔버스에 붓 자국을 남기거나, 햄버거를 먹어서 먹은 자국을 만드는 것처럼 간단한 상호작용이 가능하다고 합니다.
+
+
+![weird_videos](posts/SORA/weird_videos.png)
+
 
 >Demo page에서 이 부분을 weakness로 꼽기도 했는데, 물리적으로 불가능한 비디오나, 여러 객체가 동시에 나타나기도 하며, bite mark가 남아있지 않는 점들이 있다.
 {: .prompt-info }
 
+
 ### Simulating digital worlds.
 SORA는 artificial process를 simulate 할 수 있습니다.. 재밌는 점은 이러한 능력은 zero-shot으로 prompt에 `Minecraft`를 입력하는 것으로 가능했다고 합니다.
+
+![mincraft_demo](posts/SORA/mincraft_demo.png)
 
 ## Discussion
 SORA는 아직 많은 한계점들이 있지만 이전 구글이나, 메타의 모델보다 월등한 성능을 보이는 것 같습니다. 
@@ -102,7 +140,7 @@ SORA는 아직 많은 한계점들이 있지만 이전 구글이나, 메타의 �
 뭐 일단은 모델이 빨리 공개돼서 이것저것 실험해 볼 수 있으면 좋겠다는 생각을 하며,
 이번 포스팅 마무리하겠습니다.
  
-긴 글 읽어주셔서 감사합니다:)
+긴 글 읽어주셔서 감사합니다 ! 
 
 
 
