@@ -13,7 +13,6 @@ alt : Demo Image
 ---
 
 
-
 # SORA, OpenAI
 
 
