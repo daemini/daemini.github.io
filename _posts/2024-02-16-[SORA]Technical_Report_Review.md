@@ -6,7 +6,7 @@ comments: true
 pin : true
 # layout: default
 date: 2024-02-16 13:17:00 +09:00
-categories: [DeepLearning, Generative Model]
+categories: [Deep Learning, Generative Model]
 tags: [generative model, computer vison, sora]     # TAG names should always be lowercase
 image: posts/SORA/Thumbnail.png
 alt : Demo Image
