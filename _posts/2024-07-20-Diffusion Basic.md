@@ -26,14 +26,14 @@ Computer Vision 분야의 Generative model로 2020년부터 주목받고 있는 
 `Diffusion Model`은 현재 이미지 생성 모델 분야에서 널리 쓰이는 모델입니다. 모델 학습에는 크게 두 가지 process이 있습니다.
 
 1. Forward process
-미리 정해진 noise scheduling에 따라 이미지에 noise를 추가해, noisy한 이미지를 만듭니다.
+미리 정해진 **noise scheduling**에 따라 이미지에 noise를 **추가**해, noisy한 이미지를 만듭니다.
 
 2. Reverse process
-Forward process의 역과정입니다. noisy한 이미지로부터, noise를 예측하고 제거하는 과정입니다. 모델은 이 과정을 학습합니다.
+Forward process의 **역과정**입니다. noisy한 이미지로부터, noise를 **예측**하고 **제거**하는 과정입니다. 모델은 이 과정을 **학습**합니다.
 
-Reverse process를 적절히 학습한 모델은 완전한 noise로부터 여러 step의 reverse process를 거쳐 이미지를 생성하게 됩니다. 
+Reverse process를 적절히 학습한 모델은 완전한 noise로부터 **여러 step**의 reverse process를 거쳐 이미지를 **생성**하게 됩니다. 
 
-Diffusion model은 학습이 안정적이고 좋은 퀄리티의 이미지를 만들어낸다는 장점이 있지만, 이미지 생성에 많은 step(시간)이 걸린다는 단점이 있고, 더 빠른 이미지 생성을 위해 많은 연구가 진행 중입니다. 
+Diffusion model은 학습이 안정적이고 **좋은 퀄리티**의 이미지를 만들어낸다는 장점이 있지만, 이미지 생성에 **많은 step(시간)**이 걸린다는 단점이 있고, 더 빠른 이미지 생성을 위해 많은 연구가 진행 중입니다. 
 
 ## 1. Introduction 
 `Diffusion Model`이란 non-equilibrium thermodynamics(Langevin dynamics)에 영감을 받아 고안된 모델입니다. 분자들이 진공에서 **확산**되는 것과 같이, Diffusion Model에서는 `Markov chain`을 정의해, 천천히 random noise가 원본 이미지에 더해지며(Forward Process) 서서히 noise한 이미지로 변하게 됩니다. 모델은 이렇게 noise가 더해져 가는 과정의 `역과정(Reverse Process)`을 적절히 **예측하도록 학습**됩니다. 
