@@ -1,5 +1,5 @@
 ﻿---
-title: "[Paper] Reivew Latent Diffsion Model(LDM)"
+title: "[Paper Reivew] Latent Diffsion Model(LDM)"
 description: LDM paper를 읽고 요약한 내용입니다.
 toc: true
 comments: true

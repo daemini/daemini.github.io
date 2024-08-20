@@ -1,5 +1,5 @@
 ﻿---
-title: SORA, Technical Report Review
+title: "[Report Review] SORA, OpenAI"
 description: OpenAI의 SORA 발표 이후, 간단히 공부한 내용입니다.
 toc: true
 comments: true

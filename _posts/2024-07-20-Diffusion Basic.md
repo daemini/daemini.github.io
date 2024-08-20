@@ -1,5 +1,5 @@
 ﻿---
-title: Diffsion Basic
+title: "[Study] Diffsion Basic"
 description: Diffusion model의 간단한 이해를 돕기위한 포스트입니다.
 toc: true
 comments: true
