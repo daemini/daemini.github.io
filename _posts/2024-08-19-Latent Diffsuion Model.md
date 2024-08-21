@@ -147,7 +147,7 @@ latent space를 이용함으로써 LDM은 computational cost를 상당히 줄였
 
 	
 ## Reference 
-[JiYeop Kim's blog](https://kimjy99.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/ldm/)를 참고하여 작성하였습니다.
+[JiYeop Kim's blog](https://kimjy99.github.io/)를 참고하여 작성하였습니다.
 
 
 

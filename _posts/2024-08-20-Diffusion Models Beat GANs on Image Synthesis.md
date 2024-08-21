@@ -1,6 +1,6 @@
 ﻿---
 title: "[Paper Reivew] Diffusion Models Beat GANs on Image Synthesis (ADM)"
-description: Diffusion model이 GAN의 성능을 넘어선 ADM에 대한 리뷰입니다. 
+description: Diffusion model로 GAN의 성능을 넘어선 ADM에 대한 리뷰입니다. 
 toc: true
 comments: true
 # layout: default
@@ -20,7 +20,7 @@ alt : Thumbnail
 잘못된 내용이 있다면 댓글로 알려주세요 !
 
  
-> Diffusion Models Beat GANs on Image Synthesis [[Paper]](https://arxiv.org/abs/2112.10752) [[Github]](https://github.com/CompVis/latent-diffusion)<br/>
+> Diffusion Models Beat GANs on Image Synthesis [[Paper]](https://arxiv.org/abs/2105.05233) [[Github]]https://github.com/openai/guided-diffusion)<br/>
 > Prafulla Dhariwal, Alex Nichol, OpenAI<br/>
 > 1 Jun 2021
 
@@ -214,4 +214,4 @@ classifier guidance의 효과는 classifier의 gradient로부터 강력한 생�
 
 
 ## Reference
-[JiYeop Kim's blog](https://kimjy99.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/ldm/)를 참고하여 작성하였습니다.
+[JiYeop Kim's blog](https://kimjy99.github.io/)를 참고하여 작성하였습니다.
