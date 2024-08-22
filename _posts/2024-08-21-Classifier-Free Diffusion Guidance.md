@@ -1,5 +1,5 @@
 ﻿---
-title: "[Paper Reivew] CLASSIFIER-FREE DIFFUSION GUIDANCE (CFG)"
+title: "[Paper Reivew] Classifier-Free Diffusion Guidance (CFG)"
 description: Classifier 없이 Classifier Guidance를 하는 방법론을 제시하며, 이미지 품질과 다양성을 trade-off 할 수있음을 보인 논문입니다.
 toc: true
 comments: true
@@ -8,9 +8,15 @@ math: true
 date: 2024-08-21 16:00:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, cfg, google]     # TAG names should always be lowercase
-image: /posts/7_CFG/CFG_Thumbnail.png
+image: /posts/7_CFG/CFG_Thumbnail.jpeg
 alt : Thumbnail
 ---
+
+
+> Classifier-Free Diffusion Guidance [[Paper]](https://arxiv.org/abs/2207.12598) <br/>
+> Jonathan Ho, Tim Salimans <br/>
+> Google Research, Brain team  <br/>
+> 28 Sep 2021  <br/>
 
 
 # 들어가며,,
