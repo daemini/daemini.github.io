@@ -41,12 +41,16 @@ $$
 
 여기서 $$ \lambda = \log (\alpha_\lambda^2 / \sigma_\lambda^2) $$이므로, $$ \lambda $$를 $$ z_\lambda $$의 **log signal-to-noise ratio**로 생각할 수 있다. Forward process는 $$ \lambda $$가 작아지는 방향으로 진행된다.
 
+---
+
 $$ x $$로 conditioning하면 **forward process**는 transition $$ q(z_\lambda' \vert z_\lambda, x) = \mathcal{N}(\tilde{\mu}_{\lambda' \vert \lambda} (z_\lambda, x), \tilde{\sigma}_{\lambda' \vert \lambda}^2 I) $$ 를 반대로하여 나타낼  수 있다. 
 
 $$ \begin{equation}
 \tilde{\mu}_{\lambda' \vert \lambda} (z_\lambda, x) = e^{\lambda - \lambda'} \bigg(\frac{\alpha_\lambda'}{\alpha_{\lambda}}\bigg) z_{\lambda} + (1 - e^{\lambda - \lambda'}) \alpha_{\lambda'} x, 
 \quad \quad \tilde{\sigma}_{\lambda' \vert \lambda}^2 = (1 - e^{\lambda - \lambda'}) \sigma_{\lambda'}^2
 \end{equation} $$
+
+---
 
 **Reverse process**는 $$ p_\theta (z_{\lambda_\textrm{min}}) =\mathcal{N}(0, I) $$로부터 시작한다. 
 
@@ -63,6 +67,8 @@ x_\theta (z_\lambda) = \frac{z_\lambda - \sigma_\lambda \epsilon_\theta (z_\lamb
 \end{equation} $$로 parameterization하여 $$ \begin{equation}
 \mathbb{E}_{\epsilon, \lambda} \bigg[ \| \epsilon_\theta (z_\lambda) - \epsilon \|_2^2 \bigg]
 \end{equation} $$를 objective function으로 사용한다. 이때 $$ \epsilon \sim \mathcal{N} (0,I) $$이며, $$ z_\lambda = \alpha_\lambda x + \sigma_\lambda \epsilon $$이다.
+
+---
 
 conditional 생성 모델링의 경우, **단순히 data $$ x $$가 conditioning 정보 $$ c $$와 함께 입력으로 들어간다는 점**이다. 즉, reverse process에서 $$ \epsilon_\theta $$가 $$ \epsilon_\theta (z_\lambda, c) $$로 바뀐다는 점이다.
 
