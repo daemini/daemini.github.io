@@ -11,16 +11,16 @@ tags: [diffusion model, generative model, ldm]     # TAG names should always be 
 image: /posts/Latent Diffusion Model/conditional_ldm.png
 alt : LDM
 ---
+> CVPR 2022. [[Paper]](https://arxiv.org/abs/2112.10752) [[Github]](https://github.com/CompVis/latent-diffusion)<br/>
+> Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, Björn Ommer  <br/>
+Ludwig Maximilian University of Munich & IWR, Heidelberg University, Germany | Runway ML  <br/>
+20 Dec 2021
 
 # 들어가며
 이 포스팅은 High-Resolution Image Synthesis with Latent Diffusion Models를 읽고 공부한 내용을 담았습니다.
 잘못된 내용이 있다면 댓글로 알려주세요 ! 
 
-> High-Resolution Image Synthesis with Latent Diffusion Models <br/>
-> CVPR 2022. [[Paper]](https://arxiv.org/abs/2112.10752) [[Github]](https://github.com/CompVis/latent-diffusion)<br/>
-> Robin Rombach, Andreas Blattmann, Dominik Lorenz, Patrick Esser, Björn Ommer  <br/>
-Ludwig Maximilian University of Munich & IWR, Heidelberg University, Germany | Runway ML  <br/>
-20 Dec 2021
+
 
 ## 1. Abstract 
 Diffusion Model(DM)들이 좋은 성과를 내고 있지만, pixel space에서 동작하기 때문에 굉장히 많은 Resource(GPU, 시간,,,)가 필요하다. 이에 저자들은 pretrained autoencoder를 이용하여 확산 모델을 latent space에서 학습하여, 고해상도 이미지 생성을 훨씬 효율적으로 수행할 수 있음을 보였다. 또한 저자들은 cross-attention layer를 이용함으로써, DM을 여러가지 conditioning input에 대해 더 강력하고, 유연한 이미지 생성을 가능하게 했다. 

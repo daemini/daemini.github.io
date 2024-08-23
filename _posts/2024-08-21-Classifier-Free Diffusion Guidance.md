@@ -12,8 +12,7 @@ image: /posts/7_CFG/CFG_Thumbnail.jpeg
 alt : Thumbnail
 ---
 
-
-> Classifier-Free Diffusion Guidance [[Paper]](https://arxiv.org/abs/2207.12598) <br/>
+> NeurIPS Workshop 2021. [[Paper]](https://arxiv.org/abs/2207.12598) <br/>
 > Jonathan Ho, Tim Salimans <br/>
 > Google Research, Brain team  <br/>
 > 28 Sep 2021  <br/>

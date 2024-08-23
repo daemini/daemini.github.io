@@ -13,14 +13,14 @@ alt : Thumbnail
 ---
 
 
+> CVPR 2023.[[Paper]](https://arxiv.org/abs/2208.12242) [[Demo]](https://dreambooth.github.io/) [[Github]](https://github.com/Victarry/stable-dreambooth)<br/>
+> Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch, Michael Rubinstein, Kfir Aberman <br/>
+> Google Research | Boston University <br/>
+> 25 Aug 2022 <br/>
 
 # 들어가며,,
 본 논문은 Text-to-Image(T2I) 모델에서 이전까지는 불가능했던 **'Personalization'**을 위한 방법론을 제시한다. **몇 장의 이미지를 입력**으로 받아 pretrained T2I model을 finetune하면 **특정 대상과 특정 식별자**를 학습할 수 있게된다. 이 방법론을 사용해 대상의 **key feature를 유지**하면서, recontextualization, text-guided view synthesis,  aritistic rendering 등을 가능하게 한다. 
 
-> DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation [[Paper]](https://arxiv.org/abs/2208.12242) [[Demo]](https://dreambooth.github.io/)[[Github]](https://github.com/Victarry/stable-dreambooth)<br/>
-> Nataniel Ruiz, Yuanzhen Li, Varun Jampani, Yael Pritch, Michael Rubinstein, Kfir Aberman <br/>
-> Google Research | Boston University <br/>
-> 25 Aug 2022 <br/>
 
 ## **1. Introduction**
 최근 Large T2I model들은 전례없는 성능을 보여주는 반면, 주어진 **reference subject를 정확히 생성하는데에는 한계**가 있다. 이러한 문제의 주된 이유는 표현의 제한성에 있다. 아무리 자세히 text prompt를 작성하더라도 **모든 디테일을 설명할 수는 없다.**

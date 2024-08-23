@@ -12,6 +12,9 @@ image: /posts/ADM/Diffusion1.png
 alt : Thumbnail
 ---
 
+> NIPS 2022. [[Paper]](https://arxiv.org/abs/2105.05233) [[Github]](https://github.com/openai/guided-diffusion)<br/>
+> Prafulla Dhariwal, Alex Nichol, OpenAI<br/>
+> 1 Jun 2021
 
 # 들어가며
 
@@ -20,9 +23,7 @@ alt : Thumbnail
 잘못된 내용이 있다면 댓글로 알려주세요 !
 
  
-> Diffusion Models Beat GANs on Image Synthesis [[Paper]](https://arxiv.org/abs/2105.05233) [[Github]]https://github.com/openai/guided-diffusion)<br/>
-> Prafulla Dhariwal, Alex Nichol, OpenAI<br/>
-> 1 Jun 2021
+
 
 
 ## 1. Introduction
