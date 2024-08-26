@@ -110,7 +110,7 @@ $$
 
 ### **3.2. Comparisons**
 
-![table1](/posts/8_DreamBooth/table1.png)
+![table1](/posts/8_DreamBooth/table1.png){: width="700" height="300"}
 
 Text-inversion 방식에 비해 훨씬 좋은 성능을 내는 것을 확인했다고 한다.
 
@@ -118,7 +118,7 @@ Text-inversion 방식에 비해 훨씬 좋은 성능을 내는 것을 확인했�
 
 **1. Prior Preservation Loss**
 
-![fig6](/posts/8_DreamBooth/fig6.png)
+![fig6](/posts/8_DreamBooth/fig6.png){: width="700" height="300"}
 _Encouraging diversity with prior-preservation loss_
 
 Naive한 fine-tuning은 overfitting 문제가 발생하는데, **PPL**을 사용하면 다양한 포즈의 샘플이 나오는 것을 확인할 수 있다.
@@ -175,7 +175,7 @@ Style transfer(source structure은 유지한채로 스타일만 transfer)와는 
 
 마지막으로 promptr가 original setting과 유사할 때 overfitting 문제가 발생한다고 한다.
 
-![fig9](/posts/8_DreamBooth/fig9.png)
+![fig9](/posts/8_DreamBooth/fig9.png){: width="700" height="300"}
 
 또한, 다음과 같은 문제점 또한 발생한다고 한다.
 

@@ -36,7 +36,7 @@ Diffusion Model(DM)들이 좋은 성과를 내고 있지만, pixel space에서 �
 
 저자들은 Perceptually 동일하지만, 계산적으로 더 적합한 space를 찾는 것을 목표로 하여, 고해상도 이미지 생성을 위한 DM 모델을 학습하였다.
 
-![perceptual_semantic_compression](/posts/Latent Diffusion Model/perceptual_semantic_compression.png)
+![perceptual_semantic_compression](/posts/Latent Diffusion Model/perceptual_semantic_compression.png){: width="700" height="300"}
 _Illustrating perceptual and semantic compression_
 
 따라서 저자들은 data space와 perceptually 동일한 lower dimensional space를 얻기 위해, autoencoder를 학습하였다. 이러한 방식을 사용해, 복잡성을 줄이고 더 효과적인 이미지 생성을 가능하게 하였다. 
@@ -130,10 +130,10 @@ Conditional Latent Diffusion은 이미지 생성 과정에서 조건(text, class
 LDM은 cross-attention mechanism을 사용하여 주어진 condition을 latent space에 반영하고, 이를 기반으로 이미지의 특정 속성을 제어하며, 다양한 스타일이나 주제를 가진 이미지를 생성하는 데 유용한 것을 확인할 수 있다.
 
 ### 4.4 Super-Resolution with Latent Diffusion
-![super_resolution](/posts/Latent Diffusion Model/super_resolution.png)
+![super_resolution](/posts/Latent Diffusion Model/super_resolution.png){: width="600" height="300"}
 
 ### 4.5. Inpainting with Latent Diffusion
-![inpainting.png](/posts/Latent Diffusion Model/inpainting.png)
+![inpainting.png](/posts/Latent Diffusion Model/inpainting.png){: width="600" height="200"}
 
 
 ## 5. Limitations

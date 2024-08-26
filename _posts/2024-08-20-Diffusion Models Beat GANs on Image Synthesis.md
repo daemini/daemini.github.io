@@ -94,7 +94,7 @@ $$
 $$
 이때 $$ y = [y_s, y_b] $$ 는 timestep, class embedding의 linear projection이다.
 
-![table3](/posts/ADM/table3.png)
+![table3](/posts/ADM/table3.png){: width="400" height="300"}
 
 ablation 결과 AdaGN이 **FID 개선**에 효과적임을 확인하였다.
 

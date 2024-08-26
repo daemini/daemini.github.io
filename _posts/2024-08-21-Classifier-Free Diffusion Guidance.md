@@ -118,9 +118,9 @@ $$
 ### 4.1. VARYING THE CLASSIFIER-FREE GUIDANCE STRENGTH
 저자들은 본 논문의 **메인 목표인 Guidance strength를 바꿔가며, IS와 FID score를 trade-off** 할 수 있는지 실험하였다. $$ 64 \times 64 $$, $$ 128 \times 128 $$ 크기의 class conditional ImageNet generation으로 실험을 진행하였다. 
 
-![table1](/posts/7_CFG/table1.png)
+![table1](/posts/7_CFG/table1.png){: width="600" height="300"}
 
-![fig4](/posts/7_CFG/fig4.png)
+![fig4](/posts/7_CFG/fig4.png){: width="600" height="300"}
 
 
 (당연하게도) 실험 결과 CG와 같이, CFG에서도 **IS와 FID score를 trade-off**할 수 있었다.
@@ -133,9 +133,9 @@ $$
 ### 4.3. VARYING THE NUMBER OF SAMPLING STEPS
 Diffusion model에서 **sampling step은 이미지 품질에 주된 영향**을 미치는 요인이다. 
 
-![table2](/posts/7_CFG/table2.png)
+![table2](/posts/7_CFG/table2.png){: width="600" height="300"}
 
-![fig5](/posts/7_CFG/fig5.png)
+![fig5](/posts/7_CFG/fig5.png){: width="600" height="300"}
 _IS/FID curves over guidance strengths for ImageNet 128x128 models. Each curve represents sampling with a different number of timesteps T_
 
 실험 결과 $$ T = 256 $$이 **sampling time과 sample quality를 모두 고려**했을 때 적절했다고 한다. 하지만 저자들의 모델에서는 한 step당 denoising과정을 두 번(conditional, unconditional)거치기 때문에 비슷한 계산량의 ADM-G ($$ T= 256 $$)과 비교하려면 **CFG($$ T = 128 $$)**의 FID score가 **underperform**한다고 한다.
