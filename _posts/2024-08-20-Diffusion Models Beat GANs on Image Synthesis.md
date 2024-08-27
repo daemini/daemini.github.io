@@ -8,7 +8,7 @@ math: true
 date: 2024-08-20 18:00:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, ldm]     # TAG names should always be lowercase
-image: /posts/ADM/Diffusion1.png
+image: /posts/20240820_ADM/Diffusion1.png
 alt : Thumbnail
 ---
 
@@ -74,12 +74,12 @@ $$
 4. **BigGAN residual block** 사용
 5. residual connection의 **scale**을 $$ \frac{1}{\sqrt{2}} $$로 바꾸기
 
-![Table1](/posts/ADM/Table1.png)
+![Table1](/posts/20240820_ADM/Table1.png)
 _Ablation of various architecture changes, evaluated at 700K and 1200K iterations_
 
 실험 결과 **rescale resblock**을 제외하고, 모두 FID score가 **개선**되는 것을 확인할 수 있었다.
 
-![fig2](/posts/ADM/fig2.png)
+![fig2](/posts/20240820_ADM/fig2.png)
 _Ablation of various architecture changes, showing FID as a function of wall-clock time._
 
 또한 저자들은 위 그래프에서 볼 수 있듯이, **depth**를 늘리는 것은 **perfomance 향상**에 기여하기는 하지만, **traning time**이 너무 **길어지기** 때문에 앞으로의 연구에서는 사용하지 **않았다고** 한다.
@@ -94,7 +94,7 @@ $$
 $$
 이때 $$ y = [y_s, y_b] $$ 는 timestep, class embedding의 linear projection이다.
 
-![table3](/posts/ADM/table3.png){: width="400" height="300"}
+![table3](/posts/20240820_ADM/table3.png){: width="400" height="300"}
 
 ablation 결과 AdaGN이 **FID 개선**에 효과적임을 확인하였다.
 
@@ -154,7 +154,7 @@ $$
 
 정리하자면, conditional transition operator를 unconditional 과 유사하게 Gaussian 분포로 근사할 수 있는데, 이때 평균은 $$ \Sigma g $$ 만큼 이동하게 된다.
 
-![al1](/posts/ADM/al1.png)
+![al1](/posts/20240820_ADM/al1.png)
 
 ### 4.2. Conditional Sampling for DDIM
 4.1 의 유도는 **stochastic diffusion sampling에만 유효**하며, **DDIM** 같이 **deterministic**한 방식에는 적용될 수 **없다.** 이에 저자들은 score-based conditioning trick을 채택한다. 만약 더해진 노이즈를 예측하는 모델 $$ \epsilon_\theta(x_t) $$이 있는 경우, 다음과 같은 score function 유도가 가능하다. 
@@ -182,12 +182,12 @@ $$
 \end{equation}
 $$
 
-![al2](/posts/ADM/al2.png)
+![al2](/posts/20240820_ADM/al2.png)
 
 ### 4.3. Scaling Classifier Gradients
 저자들은 실험 초기에 classifier scale 1.0을 사용했으나, 원하는 class의 이미지가 잘 생성되지 않았다. 이때 **classifier scale**을 10.0으로 키웠더니 아래와 같이 거의 100%로 **원하는 class의 이미지를 생성**해냈다고 한다.
 
-![fig3](/posts/ADM/fig3.png)
+![fig3](/posts/20240820_ADM/fig3.png)
 
 classifier scaling의 효과는 다음 식으로부터 이해할 수 있다.
 
@@ -200,7 +200,7 @@ $$
 $$ s > 1$$일 때, 분포는 $$ p(y \vert x)$$보다 **뾰족해지며**, classifier의 mode에 초점을 맞추어, (덜 다양하지만) **높은 품질의 이미지**를 생성하는데 적합하다.
 
 ## 5. Results
-![table5](/posts/ADM/table5.png)
+![table5](/posts/20240820_ADM/table5.png)
 
 ## 6. Limitations and Future Work
 Diffusion model은 이미지 생성 분야에서 매우 유망하지만 여전히 여러 단계의 denoising step을 거쳐야하므로, **GAN에 비해 느리다**는 점이 단점으로 꼽힌다. 

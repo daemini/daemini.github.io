@@ -6,7 +6,7 @@ toc: true
 date: 2024-06-18 15:07:00 +09:00
 categories: [Blogging, Tutorial]
 tags: [markdown, tutorial]     # TAG names should always be lowercase
-image: posts/Markdown_Practice/markdown.png
+image: posts/20240618_Markdown_Practice/markdown.png
 alt : Responsive rendering of Chirpy theme on multiple devices.
 ---
 

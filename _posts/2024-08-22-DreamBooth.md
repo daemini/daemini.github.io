@@ -8,7 +8,7 @@ math: true
 date: 2024-08-22 17:10:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, dreambooth, personalizaiton, google]     # TAG names should always be lowercase
-image: /posts/8_DreamBooth/DreamBooth_Thumbnail.png
+image: /posts/20240822_DreamBooth/DreamBooth_Thumbnail.png
 alt : Thumbnail
 ---
 
@@ -93,7 +93,7 @@ $$
 
 이때 $$ \lambda w_{t'} \| \hat{x}_\theta (\alpha_{t'} x_\textrm{pr} + \sigma_{t'} \epsilon', c_\textrm{pr}) - x_\textrm{pr} \|_2^2 $$ Term은 prior-preservation term이라고 한다. 
 
-![fig3](/posts/8_DreamBooth/fig3.png)
+![fig3](/posts/20240822_DreamBooth/fig3.png)
 
 
 
@@ -106,11 +106,11 @@ $$
 
 - Object(21개) : 20 recontextualization prompts and 5 property modification prompts for objects
 
-![fig5](/posts/8_DreamBooth/fig5.png)
+![fig5](/posts/20240822_DreamBooth/fig5.png)
 
 ### **3.2. Comparisons**
 
-![table1](/posts/8_DreamBooth/table1.png){: width="700" height="300"}
+![table1](/posts/20240822_DreamBooth/table1.png){: width="700" height="300"}
 
 Text-inversion 방식에 비해 훨씬 좋은 성능을 내는 것을 확인했다고 한다.
 
@@ -118,7 +118,7 @@ Text-inversion 방식에 비해 훨씬 좋은 성능을 내는 것을 확인했�
 
 **1. Prior Preservation Loss**
 
-![fig6](/posts/8_DreamBooth/fig6.png){: width="700" height="300"}
+![fig6](/posts/20240822_DreamBooth/fig6.png){: width="700" height="300"}
 _Encouraging diversity with prior-preservation loss_
 
 Naive한 fine-tuning은 overfitting 문제가 발생하는데, **PPL**을 사용하면 다양한 포즈의 샘플이 나오는 것을 확인할 수 있다.
@@ -132,7 +132,7 @@ Naive한 fine-tuning은 overfitting 문제가 발생하는데, **PPL**을 사용
 **1. Recontextualization**
 “a [V] [class noun] [context description]”와 같은 prompt를 이용해 Recontextualization를 실험했다고 한다. 
 
-![fig7](/posts/8_DreamBooth/fig7.png)
+![fig7](/posts/20240822_DreamBooth/fig7.png)
 _**Recontextualization.** We generate images of the subjects in different environments, with high preservation of subject details and realistic scene-subject interactions_
 
 ---
@@ -143,28 +143,28 @@ Art Rendition을 실험했다고 한다.
 
 Style transfer(source structure은 유지한채로 스타일만 transfer)와는 다르게 DreamBooth는 의미있고 창의적인 변형이 가능했다고 한다.
 
-![art_rendition](/posts/8_DreamBooth/art_rendition.png)
+![art_rendition](/posts/20240822_DreamBooth/art_rendition.png)
 
 --- 
 
 **3. Novel View Synthesis**
 저자들은 모델이 **subject의 보지 못한 부분**도 **class prior 정보로부터 extrapolate**를 통해 적절한 이미지를 생성해냈음을 강조한다.
 
-![text_guided_view_synthesis](/posts/8_DreamBooth/text_guided_view_synthesis.png)
+![text_guided_view_synthesis](/posts/20240822_DreamBooth/text_guided_view_synthesis.png)
 
 ---
 
 **4. Property Modification**
 **unique visual feature은 유지하면서** 필요한 부분만 적절히 수정하는 것을 확인할 수 있다.
 
-![property_modification](/posts/8_DreamBooth/property_modification.png)
+![property_modification](/posts/20240822_DreamBooth/property_modification.png)
 
 ---
 
 
 **5. Accessorization**
 주어진 subject의 identity는 유지하면서, 다양한 outfit이나 accessory가 잘 적용된 것을 확인할 수 있다.
-![accessorization](/posts/8_DreamBooth/accessorization.png)
+![accessorization](/posts/20240822_DreamBooth/accessorization.png)
 
 
 ## **4. Limitations**
@@ -175,7 +175,7 @@ Style transfer(source structure은 유지한채로 스타일만 transfer)와는 
 
 마지막으로 promptr가 original setting과 유사할 때 overfitting 문제가 발생한다고 한다.
 
-![fig9](/posts/8_DreamBooth/fig9.png){: width="700" height="300"}
+![fig9](/posts/20240822_DreamBooth/fig9.png){: width="700" height="300"}
 
 또한, 다음과 같은 문제점 또한 발생한다고 한다.
 

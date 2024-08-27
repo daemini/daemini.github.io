@@ -8,7 +8,7 @@ math: true
 date: 2024-07-20 14:30:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model]     # TAG names should always be lowercase
-image: /posts/Diffusion_Model_Basic/Cat.png
+image: /posts/20240720_Diffusion_Model_Basic/Cat.png
 alt : Stable Diffusion
 ---
 
@@ -43,7 +43,7 @@ Diffusion model은 학습이 안정적이고 **좋은 퀄리티**의 이미지�
 
 말로만 이야기하면 어려우니 아래 그림을 보면서 이해해 봅시다.
 
-![DDPM](posts/Diffusion_Model_Basic/DDPM.png)
+![DDPM](posts/20240720_Diffusion_Model_Basic/DDPM.png)
 _Fig1. The Markov chain of forward (reverse) process _
 
 오른쪽 $$ \mathbf x_{0} $$가 원본 이미지, 왼쪽 $$\mathbf x_{T} $$가 노이즈가 $$ T $$번 추가되어, 완전한 노이즈 이미지(pure noise)로 변했다고 생각하면 됩니다. 
@@ -86,7 +86,7 @@ $$
 
 ## 3. Reverse diffusion Process
 
-![DDPM](posts/Diffusion_Model_Basic/DDPM.png)
+![DDPM](posts/20240720_Diffusion_Model_Basic/DDPM.png)
 다시 그림을 봅시다. 우리는 이전 forward process에서 이미지에 노이즈를 점점 더 해가는 과정, $$ q(\mathbf{x}_t \vert \mathbf{x}_{t-1}) $$을 이해했습니다. (오른쪽에서 왼쪽으로 가는 화살표)
 
 `Reverse process`란 이의 역 과정이라 생각하면 됩니다(왼쪽에서 오른쪽으로 가는 화살표). 현재 노이즈가 섞인 이미지를 보고, 1 step만큼 이미지를 제거하는 과정인 $$ q(\mathbf{x}_{t-1} \vert \mathbf{x}_{t}) $$가 Reverse process이며, 이를 안다면 우리는 pure Gaussian noise, $$ \mathbf{x}_T \sim \mathcal{N}(\mathbf{0}, \mathbf{I}) $$로부터 원본 이미지를 생성해 낼 수 있음을 의미합니다. Forward process에서 작은 noise를 더했기 때문에 ($$ \beta_t $$가 충분히 작으므로) $$ q(\mathbf{x}_{t-1} \vert \mathbf{x}_{t}) $$도 Gaussian으로 근사할 수 있습니다.
@@ -208,7 +208,7 @@ $$
 
 최종적인 알고리즘은 다음과 같습니다. 
 
-![DDPM-algo](posts/Diffusion_Model_Basic/DDPM-algo.png)
+![DDPM-algo](posts/20240720_Diffusion_Model_Basic/DDPM-algo.png)
 _Fig2. The training and sampling algorithms in DDPM (Image source: [Ho et al. 2020](https://arxiv.org/abs/2006.11239))_
 
 ## END...?

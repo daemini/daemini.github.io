@@ -8,7 +8,7 @@ math: true
 date: 2024-08-19 17:26:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, ldm]     # TAG names should always be lowercase
-image: /posts/Latent Diffusion Model/conditional_ldm.png
+image: /posts/20240819_Latent Diffusion Model/conditional_ldm.png
 alt : LDM
 ---
 > CVPR 2022. [[Paper]](https://arxiv.org/abs/2112.10752) [[Github]](https://github.com/CompVis/latent-diffusion)<br/>
@@ -36,7 +36,7 @@ Diffusion Model(DM)들이 좋은 성과를 내고 있지만, pixel space에서 �
 
 저자들은 Perceptually 동일하지만, 계산적으로 더 적합한 space를 찾는 것을 목표로 하여, 고해상도 이미지 생성을 위한 DM 모델을 학습하였다.
 
-![perceptual_semantic_compression](/posts/Latent Diffusion Model/perceptual_semantic_compression.png){: width="700" height="300"}
+![perceptual_semantic_compression](/posts/20240819_Latent Diffusion Model/perceptual_semantic_compression.png){: width="700" height="300"}
 _Illustrating perceptual and semantic compression_
 
 따라서 저자들은 data space와 perceptually 동일한 lower dimensional space를 얻기 위해, autoencoder를 학습하였다. 이러한 방식을 사용해, 복잡성을 줄이고 더 효과적인 이미지 생성을 가능하게 하였다. 
@@ -108,7 +108,7 @@ L_{LDM} := \mathbb{E}_{\mathcal{E} (x), y, \epsilon \sim \mathcal{N} (0, 1), t} 
 \end{equation}
 $$
 
-![conditional_ldm.png](/posts/Latent Diffusion Model/conditional_ldm.png)
+![conditional_ldm.png](/posts/20240819_Latent Diffusion Model/conditional_ldm.png)
 
 ## 4. Experiments
 저자들은 pixel based 모델과 저자들의 LDM을 training과 inference을 모두 비교한다. 저자들은 실험적으로 $$ VQ $$-regularized latent space가 (초반엔 성능이 다소 안좋아 보이더라도) 때때로 더 나은 sample quality를 보임을 확인했다.
@@ -117,7 +117,7 @@ $$
 저자들은 downsampling factor를 조절해가며, 최적의 latent space dimension을 찾고자 하였다. 
 실험적으로 $$ f = 4, 8 $$이 높은 퀄리티의 생성 결과를 나타내었다.
 
-![Perceptual Compression Tradeoffs.png](/posts/Latent Diffusion Model/Perceptual Compression Tradeoffs.png)
+![Perceptual Compression Tradeoffs.png](/posts/20240819_Latent Diffusion Model/Perceptual Compression Tradeoffs.png)
 
 ### 4.2. Image Generation with Latent Diffusion
 저자들은 CelebA-HQ, FFHQ, LSUN-Churches and -Bedrooms 데이터셋을 이용하여, **sample quality** 와 **data manifold의 coverage(FID, Precision-and-Recall)** 를 측정하였으며, CelebA-HQ에서 SOTA FID 5.11을 달성했다고 한다.
@@ -130,10 +130,10 @@ Conditional Latent Diffusion은 이미지 생성 과정에서 조건(text, class
 LDM은 cross-attention mechanism을 사용하여 주어진 condition을 latent space에 반영하고, 이를 기반으로 이미지의 특정 속성을 제어하며, 다양한 스타일이나 주제를 가진 이미지를 생성하는 데 유용한 것을 확인할 수 있다.
 
 ### 4.4 Super-Resolution with Latent Diffusion
-![super_resolution](/posts/Latent Diffusion Model/super_resolution.png){: width="600" height="300"}
+![super_resolution](/posts/20240819_Latent Diffusion Model/super_resolution.png){: width="600" height="300"}
 
 ### 4.5. Inpainting with Latent Diffusion
-![inpainting.png](/posts/Latent Diffusion Model/inpainting.png){: width="600" height="200"}
+![inpainting.png](/posts/20240819_Latent Diffusion Model/inpainting.png){: width="600" height="200"}
 
 
 ## 5. Limitations

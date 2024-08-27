@@ -8,7 +8,7 @@ math: true
 date: 2024-08-21 16:00:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, cfg, google]     # TAG names should always be lowercase
-image: /posts/7_CFG/CFG_Thumbnail.jpeg
+image: /posts/20240821_CFG/CFG_Thumbnail.jpeg
 alt : Thumbnail
 ---
 
@@ -83,7 +83,7 @@ conditional 생성 모델링의 경우, **단순히 data $$ x $$가 conditioning
 ### 3.1. CLASSIFIER GUIDANCE
 truncation-like 효과를 얻기위해 [ADM, 이전포스팅](https://daemini.github.io/posts/Diffusion-Models-Beat-GANs-on-Image-Synthesis/)에서는 CG를 제안했다. 
 
-![fig2](/posts/7_CFG/fig2.png)
+![fig2](/posts/20240821_CFG/fig2.png)
 _The effect of guidance on a mixture of three Gaussians, each mixture component represent- ing data conditioned on a class._
 
 위 그림에서 오른쪽으로 갈수록 classifier guidance가 커질수록, guidance가 없을 때 Gaussian으로 분포하던 데이터들이 아주 좁은 영역으로 모이는 것을 확인할 수 있다.
@@ -96,7 +96,7 @@ Guidance weight를 $$ w+1 $$로 unconditional model에 적용하는 것은 이�
 
 **Training**: 별도의 classifier를 학습하는 것이 아니라, unconditional diffusion model($$ p_\theta(z) $$)과 conditional diffusion model($$ p_\theta(z \vert c) $$)를 **함께 학습 시킨다.** 하나의 NN을 사용하여 구현할 수 있으며 hyperparameter $$ p_\textrm{uncond} $$를 정해 특정 확률로 null token이 condition으로 입력되는 것이다.
 
-![al1](/posts/7_CFG/al1.png)
+![al1](/posts/20240821_CFG/al1.png)
 
 **Sampling**: conditional model과 unconditional model의 선형 결합으로 추정한다.
 
@@ -106,7 +106,7 @@ $$
 \end{equation}
 $$
 
-![al2](/posts/7_CFG/al2.png)
+![al2](/posts/20240821_CFG/al2.png)
 
 
 ## 4. EXPERIMENTS
@@ -118,9 +118,9 @@ $$
 ### 4.1. VARYING THE CLASSIFIER-FREE GUIDANCE STRENGTH
 저자들은 본 논문의 **메인 목표인 Guidance strength를 바꿔가며, IS와 FID score를 trade-off** 할 수 있는지 실험하였다. $$ 64 \times 64 $$, $$ 128 \times 128 $$ 크기의 class conditional ImageNet generation으로 실험을 진행하였다. 
 
-![table1](/posts/7_CFG/table1.png){: width="600" height="300"}
+![table1](/posts/20240821_CFG/table1.png){: width="600" height="300"}
 
-![fig4](/posts/7_CFG/fig4.png){: width="600" height="300"}
+![fig4](/posts/20240821_CFG/fig4.png){: width="600" height="300"}
 
 
 (당연하게도) 실험 결과 CG와 같이, CFG에서도 **IS와 FID score를 trade-off**할 수 있었다.
@@ -133,9 +133,9 @@ $$
 ### 4.3. VARYING THE NUMBER OF SAMPLING STEPS
 Diffusion model에서 **sampling step은 이미지 품질에 주된 영향**을 미치는 요인이다. 
 
-![table2](/posts/7_CFG/table2.png){: width="600" height="300"}
+![table2](/posts/20240821_CFG/table2.png){: width="600" height="300"}
 
-![fig5](/posts/7_CFG/fig5.png){: width="600" height="300"}
+![fig5](/posts/20240821_CFG/fig5.png){: width="600" height="300"}
 _IS/FID curves over guidance strengths for ImageNet 128x128 models. Each curve represents sampling with a different number of timesteps T_
 
 실험 결과 $$ T = 256 $$이 **sampling time과 sample quality를 모두 고려**했을 때 적절했다고 한다. 하지만 저자들의 모델에서는 한 step당 denoising과정을 두 번(conditional, unconditional)거치기 때문에 비슷한 계산량의 ADM-G ($$ T= 256 $$)과 비교하려면 **CFG($$ T = 128 $$)**의 FID score가 **underperform**한다고 한다.
