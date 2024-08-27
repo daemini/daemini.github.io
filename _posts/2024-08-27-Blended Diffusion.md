@@ -8,7 +8,7 @@ math: true
 date: 2024-08-27 16:26:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, blended, cvpr, t2i]     # TAG names should always be lowercase
-image: /posts/20240827_Blended/Thumbnail.jpeg
+image: /posts/20240827_Blended/thumbnail.jpeg
 alt : Thumbnail
 ---
 
