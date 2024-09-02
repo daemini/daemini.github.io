@@ -302,13 +302,8 @@ $$
 
 작은 생성 품질을 야기하지만, 샘플링 과정을 훨씬 효율적으로 만들 수 있다고 한다.
 
-
-<center>
-  <img src='{{"/posts/20240828_VQ_Diffusion/al1.png" | relative_url}}' width="48%">
-  &nbsp;
-  <img src='{{"/posts/20240828_VQ_Diffusion/al2.png" | relative_url}}' width="48%">
-</center>
-
+![al1](/posts/20240828_VQ_Diffusion/al1.png){: width="400" height="400"}
+![al2](/posts/20240828_VQ_Diffusion/al2.png){: width="400" height="400"}
 
 ## 5. Experiments
 이 섹션에서는 다양한 실험 결과를 통해 저자들이 제안한 Text-to-image 합성 방법론의 우수성을 입증한다. VQ-Diffusion은 unconditional, conditional 이미지 합성에서 뛰어난 성능을 보였다고 한다.
