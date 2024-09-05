@@ -294,3 +294,6 @@ Fewer token sampling과 비슷하지만, purity 계산을 통해, sampling 위�
 ![fig5](/posts/20240903_Improved_VQ_Diffusion/fig5.png){: width="800" height="300"}
 
 
+## **Reference**
+[JiYeop Kim's blog](https://kimjy99.github.io/)를 참고하여 작성하였습니다.
+
