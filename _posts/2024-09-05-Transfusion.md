@@ -22,6 +22,8 @@ alt : Thumbnail
 나온지 2주 정도된 따끈따끈한 논문입니다.
 굉장히 놀라운 결과네요...
 
+이 논문이 Baseline으로 비교하는 Chameleon 포스팅이 궁금하다면 -> [Chameleon, 이전 포스팅](https://daemini.github.io/posts/Chameleon/)
+
 # TL;DR
 
 **Transfusion**은 텍스트와 이미지 생성을 위한 단일 모델로, 두 가지 다른 최적화 목표를 결합해 효율적인 **mult-modality** 생성을 구현한 방법입니다.
