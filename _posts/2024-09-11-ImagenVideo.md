@@ -45,7 +45,7 @@ alt : Thumbnail
 ## 2. Imagen Video
 **Imagen Video**는 비디오 확산 모델을 기반으로 한 계단식 시스템으로, 텍스트 기반의 비디오 생성, 공간 초해상도, 시간 초해상도를 수행하는 7개의 하위 모델로 구성되어 있습니다. 이 시스템을 통해 **1280×768 해상도**에서 **초당 24프레임**의 **128프레임(약 5.3초)** 비디오를 생성하며, 약 **1억 2600만 픽셀**에 해당합니다.
 
-![fig6](/posts/20240910_ImagenVideo/fig6.png){: width="800" height="300"}
+![fig6](/posts/20240910_ImagenVideo/fig6.png){: width="800" height="300"}
 
 ### 2.1. Diffusion Models
 Imagen Video는 continuous time에서 정의된 diffusion model입니다. $$ x \sim p(x) $$에서 시작하는 forward process $$ q(z \vert x) $$를 따르는 latent variable $$ z = \{ z_t \vert t \in [0, 1] \} $$ model입니다.
@@ -113,7 +113,7 @@ Imagen Video의 전체적인 파이프라인은 다음과 같습니다.
 
 저자들의 초기 연구에서 Video-U-Net를 연구했는데, 2D diffusion model을 3D space-time 구조로 확장한 것입니다. 각 노이즈 제거 모델이 여러 비디오 프레임을 동시에 처리하여 전체 비디오 프레임을 한 번에 생성합니다.  
 
-![fig7](/posts/20240910_ImagenVideo/fig6.png){: width="800" height="300"}
+![fig7](/posts/20240910_ImagenVideo/fig6.png){: width="800" height="300"}
 
 SSR, TSR 모델은 입력 비디오에 대해, 노이즈 데이터 $$ \mathbf z_t$$를 입력 채널별로 연결하여 conditioning합니다. 
 
@@ -121,7 +121,7 @@ Base diffusion 모델은 낮은 프레임 수, 낮은 해상도의 데이터를 
 
 ### 2.4. v-prediction
 
-**v-parameterization**을 사용하여 모든 모델을 파라미터화합니다. 여기서 $$ v_t \equiv \alpha_t \epsilon - \sigma_t $$입니다. 이 접근 방식은 diffusion process에 수치적 안정성을 제공하여 모델의 progressive distillation을 가능하게 합니다.
+**v-parameterization**을 사용하여 모든 모델을 파라미터화합니다. 여기서 $$ v_t \equiv \alpha_t \epsilon - \sigma_t $$입니다. 이 접근 방식은 diffusion process에 수치적 안정성을 제공하여 모델의 progressive distillation을 가능하게 합니다.
 
 또한 고해상도 모델에서 v-parameterization을 사용하면 색상 이동 아티팩트를 피할 수 있으며, 샘플 품질 메트릭의 수렴 속도가 빨라지는 장점도 있었다고 합니다.
 
@@ -185,39 +185,39 @@ Distillation이 끝나면, $$ N $$-step stochastic sampler를 사용합니다.
 
 Imagen Video는 **고해상도 비디오**를 생성할 수 있으며, 전통적인 unstructured 생성 모델에서는 찾아보기 힘든 몇 가지 독특한 기능을 가지고 있습니다.
 
-![fig8](/posts/20240910_ImagenVideo/fig8.png){: width="800" height="300"}
+![fig8](/posts/20240910_ImagenVideo/fig8.png){: width="800" height="300"}
 모델이 이미지 정보를 학습하여 **반 고흐 스타일**이나 **수채화 스타일**의 비디오를 생성할 수 있음을 보여줍니다.
 
 
-![fig9](/posts/20240910_ImagenVideo/fig9.png){: width="800" height="300"}
+![fig9](/posts/20240910_ImagenVideo/fig9.png){: width="800" height="300"}
 객체가 회전하는 동안 구조를 대체로 유지하며, 3D 구조를 이해하는 능력이 있음을 보여줍니다. 비록 회전 중 3D 일관성이 완벽하지는 않지만, Imagen Video는 3D 일관성을 강제하는 방법의 사전 모델로서 효과적일 수 있음을 시사합니다.
 
-![fig10](/posts/20240910_ImagenVideo/fig10.png){: width="800" height="300"}
+![fig10](/posts/20240910_ImagenVideo/fig10.png){: width="800" height="300"}
 **Fig. 10**에서는 다양한 애니메이션 스타일로 텍스트를 신뢰성 있게 생성할 수 있음을 보여줍니다. 이러한 결과들은 Imagen Video와 같은 **범용 생성 모델**이 **고품질 콘텐츠 생성**의 난이도를 크게 낮출 수 있음을 시사합니다.
 
 
 ### 3.2. Scaling 
-![fig11](/posts/20240910_ImagenVideo/fig11.png){: width="800" height="300"}
+![fig11](/posts/20240910_ImagenVideo/fig11.png){: width="800" height="300"}
 
 **Fig. 11**에서는 **영상 U-Net**의 파라미터 수를 확장했을 때 모델의 성능이 크게 향상된다는 것을 보여줍니다. 우리는 네트워크의 기본 채널 수와 깊이를 증가시켜 이 확장을 수행했습니다. 기존 text-image 모델과는 반대되는 결과지만, 저자들은 text-video가 더 어려운 task이기때문에, 현재 모델 크기에서 saturation되지 않았을 것이라 합니다.
 
 ### 3.3. Comparing Prediction Parameterizations
-![fig12](/posts/20240910_ImagenVideo/fig11.png){: width="800" height="300"}
+![fig12](/posts/20240910_ImagenVideo/fig11.png){: width="800" height="300"}
 
 저자들은 초기 실험에서 **$$ \epsilon $$-예측 모델**이 **$$ \mathbf v$$-예측**모델보다 성능이 떨어진다는 것을 발견했습니다, 특히 높은 해상도에서. 고해상도 SSR 모델의 경우, $$ \epsilon $$-예측은 샘플 품질 메트릭에서 상대적으로 느리게 수렴하며, 생성된 비디오에서 색상 이동과 색상 불일치 문제가 발생했습니다.
 
-![fig13](/posts/20240910_ImagenVideo/fig13.png){: width="800" height="300"}
+![fig13](/posts/20240910_ImagenVideo/fig13.png){: width="800" height="300"}
 
 
 ### 3.4. Perceptual Quality and Distillation
-![tab1](/posts/20240910_ImagenVideo/tab1.png){: width="800" height="300"}
+![tab1](/posts/20240910_ImagenVideo/tab1.png){: width="800" height="300"}
 모델 샘플과 그 증류 버전의 지각 품질 metric (CLIP 점수 및 CLIP R-정확도)비교 입니다.
 
 Distillation은 샘플링 시간과 지각 품질 간의 매우 유리한 trade-offf를 제공합니다. distilled cascade약 18배 빠르며, 원래 모델의 샘플과 유사한 품질의 비디오를 생성합니다. 
 
 FLOPs 측면에서도, distilled 모델은 약 36배 더 효율적이기도 합니다. 원래는 각 모델을 두 번 평가하여 CFG를 적용하지만, distilled 모델은 가이드를 단일 모델로 증류했기 때문에 두 번 평가할 필요가 없다는 장점도 있습니다.
 
-![fig14](/posts/20240910_ImagenVideo/fig14.png){: width="800" height="300"}
+![fig14](/posts/20240910_ImagenVideo/fig14.png){: width="800" height="300"}
 
 ## 4. Limitations
 
