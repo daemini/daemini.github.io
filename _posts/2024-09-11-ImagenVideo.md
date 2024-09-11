@@ -5,7 +5,7 @@ toc: true
 comments: true
 # layout: default
 math: true
-date: 2024-09-10 17:45:00 +09:00
+date: 2024-09-11 17:10:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, google, t2v]     # TAG names should always be lowercase
 image: /posts/20240910_ImagenVideo/thumbnail.webp
