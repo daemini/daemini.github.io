@@ -10,7 +10,7 @@ categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, google, t2v]     # TAG names should always be lowercase
 image: /posts/20240910_ImagenVideo/thumbnail.webp
 alt : Thumbnail
-author: [your Twitter handle]
+author: daemin Park
 ---
 
 > arXiv 2022. [[Paper](https://arxiv.org/abs/2210.02303)] [[Demo](https://imagen.research.google/video/)]  
