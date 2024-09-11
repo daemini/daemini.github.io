@@ -13,7 +13,7 @@ alt : Thumbnail
 ---
 
 
-> arXiv 2021. [[Paper](https://arxiv.org/abs/2205.16007)] [[Github](https://github.com/microsoft/VQ-Diffusion)]  
+> arXiv 2023. [[Paper](https://arxiv.org/abs/2205.16007)] [[Github](https://github.com/microsoft/VQ-Diffusion)]  
 > Zhicong Tang, Shuyang Gu, Jianmin Bao, Dong Chen, Fang Wen  
 > Tsinghua University | University of Science and Technology of China | Microsoft Research 
 > 31 May 2022
