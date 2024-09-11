@@ -28,6 +28,9 @@ url: "https://daemini.github.io"
 github:
   username: daemini # change to your github username
 
+author:
+  name: Daemin Park
+
 twitter:
   username: twitter_username # change to your twitter username
 
