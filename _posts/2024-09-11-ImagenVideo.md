@@ -13,35 +13,25 @@ alt : Thumbnail
 author: Daemin
 ---
 
-> arXiv 2022. [[Paper](https://arxiv.org/abs/2210.02303)] [[Demo](https://imagen.research.google/video/)]
-
-> Jonathan Ho, William Chan, Chitwan Saharia, Jay Whang, Ruiqi Gao, Alexey Gritsenko, Diederik P. Kingma, Ben Poole, Mohammad Norouzi, David J. Fleet, Tim Salimans
-
->Google Research, Brain Team
-
->5 Oct 2022
+> arXiv 2022. [[Paper](https://arxiv.org/abs/2210.02303)] [[Demo](https://imagen.research.google/video/)]   
+> Jonathan Ho, William Chan, Chitwan Saharia, Jay Whang, Ruiqi Gao, Alexey Gritsenko, Diederik P. Kingma, Ben Poole, Mohammad Norouzi, David J. Fleet, Tim Salimans  
+>Google Research, Brain Team  
+>5 Oct 2022  
 
   
   
   
 
 # TL;DR
-
-**Imagen** 이라는 Text-to-Image 모델을 비디오까지 확장한 모델(Video Diffusion)입니다.
-
-  
-
+**Imagen** 이라는 Text-to-Image 모델을 비디오까지 확장한 모델(Video Diffusion)입니다.  
 **Imagen Video**는 텍스트 조건에 따라 **고해상도 비디오를 생성하는 시스템**으로, **Cascaded video diffusion model**을 기반으로 합니다.
 
-  
 
 텍스트 프롬프트를 입력받아 기본 비디오 생성 모델과, **spatial 및 temporal super-resolution model**을 순차적으로 결합하여 고해상도 비디오를 생성합니다.
 
-  
 
 > [Demo Page](https://imagen.research.google/video/)를 보고 오시죠!
 
-  
 
 ## 1. Introduction
 
@@ -73,8 +63,6 @@ author: Daemin
 
 **Imagen Video**는 비디오 확산 모델을 기반으로 한 계단식 시스템으로, 텍스트 기반의 비디오 생성, 공간 초해상도, 시간 초해상도를 수행하는 7개의 하위 모델로 구성되어 있습니다. 이 시스템을 통해 **1280×768 해상도**에서 **초당 24프레임**의 **128프레임(약 5.3초)** 비디오를 생성하며, 약 **1억 2600만 픽셀**에 해당합니다.
 
-  
-
 ![fig6](/posts/20240910_ImagenVideo/fig6.png){: width="800" height="300"}
 
   
@@ -88,13 +76,9 @@ Imagen Video는 continuous time에서 정의된 diffusion model입니다. $$ x \
 - Forward Process :
 
 $$
-
 \begin{equation}
-
 q(z_t \vert x) = \mathcal{N}(z_t; \alpha_t x, \sigma_t^2 I), \quad q(z_t \vert z_s) = \mathcal{N}(z_t; (\alpha_t / \alpha_s) z_s, \sigma_{t \vert s}^2 I) \\
-
 \end{equation}
-
 $$
 
   
@@ -106,7 +90,6 @@ $$
   
 
 - Reverse Process :
-
 위 forward process의 역과정을 학습하기 위해 $$  \mathbf z_t \sim q(\mathbf {z}_t|\mathbf x) $$로부터 노이즈를 점차적으로 제거해 $$ \hat {\mathbf x}_\theta(\mathbf z_t, \lambda_t) \approx \mathbf x $$를 예측하도록 한다. objective function은 다음과 같다.
 
   
@@ -188,5 +171,86 @@ Imagen Video의 전체적인 파이프라인은 다음과 같습니다.
 SSR, TSR 모델은 입력 비디오에 대해, 노이즈 데이터 $$  \mathbf z_t$$를 입력 채널별로 연결하여 conditioning합니다.
 
 Base diffusion 모델은 낮은 프레임 수, 낮은 해상도의 데이터를 생성하며, Temporal attention을 사용하지만, SSR, TSR 모델은 temporal convolution을 사용해 메모리, 계산 cost를 줄였다고 합니다. (첫 두개의 super-resolution 모델에서만 Temporal attention도 사용)
+
+
+
+
+### 2.4. v-prediction
+
+  
+
+**v-parameterization**을 사용하여 모든 모델을 파라미터화합니다. 여기서 $$ v_t \equiv  \alpha_t  \epsilon - \sigma_t $$입니다. 이 접근 방식은 diffusion process에 수치적 안정성을 제공하여 모델의 progressive distillation을 가능하게 합니다.
+
+  
+
+또한 고해상도 모델에서 v-parameterization을 사용하면 색상 이동 아티팩트를 피할 수 있으며, 샘플 품질 메트릭의 수렴 속도가 빨라지는 장점도 있었다고 합니다.
+
+  
+
+### 2.5. Conditioning Augmentation
+
+저자들은 SSR과 TSR에서 noise conditioning augmentation을 사용했다고 합니다. 이는 cascaded diffuison model에서 class-conditional 생성시 매우 중요하다고 합니다. 특히 cascaded된 각 모델들의 병렬 학습을 가능하게 하며, 각 stage의 domain gap을 줄여주는 역할을 합니다.
+
+  
+
+### 2.6. Video-Image Joint Training
+
+저자의 이전연구를 따라, 이미지와 비디오를 함께 이용해 Imagen Video를 학습했다고 합니다. 학습시 개별 이미지를 video frame의 한 장면으로 간주하여 독립적인 이미지를 동일한 길이의 비디오로 묶어서 처리하는데, temporal convolution은 computation path에따라 masking된다고 합니다. 이러한 전략을 통해 video-text dataset에비해 훨씬 많은 image-text dataset을 사용할 수 있으며, 비디오 샘플의 품질을 크게 향상시킬 수 있었다고 합니다.
+
+  
+
+#### 2.6.1. Classifier Free Guidance
+
+> [CFG, 이전포스트](https://daemini.github.io/posts/Classifier-Free-Diffusion-Guidance/)
+
+  
+
+Conditional generation 세팅에서, data $$  \mathbf x $$는 signal $$ \mathbf c $$(텍스트 프롬프트의 embedding)에 의해 conditioning되어 생성된다. Diffusion 모델은 $$ \mathbf c $$를 denosining의 추가 입력으로 사용해 학습시킬 수 있다. $$ \hat{\mathbf x}_\theta (z_t, c) $$ 학습이 완료되면 guidance scale을 적용해, 다음과 같이 표현할 수 있다.
+
+  
+
+$$
+
+\begin{equation}
+
+\tilde{x}_\theta (z_t, c) = (1 + w) \hat{x}_\theta (z_t, c) - w \hat{x}_\theta (z_t)
+
+\end{equation}
+
+$$
+
+  
+
+> 이 식은 $$\mathbf v$$-space와 $$\mathbf  \epsilon$$-space에서도 똑같이 활용 가능하다.
+
+  
+
+guidance weight $$ w > 0 $$의 경우 conditioning을 과하게 강조하는 효과가 있으며, 다양성은 낮지만 높은 품질의 샘플을 생성하는 경향이 있다.
+
+  
+
+#### 2.6.2. Large Guidance Weights
+
+너무 큰 guidance weight를 사용하면 train-test mismatch가 발생하는 문제가 있습니다. 이를 위해 Imagen과 마찬가지로 dynamic clipping을 사용합니다.
+
+> e.g. $$  \text{np.clip}(x, -s, s) / s $$
+
+  
+
+하지만 dynamic clipping만으로는 over-staturation 문제가 여전히 발생해, 저자들은 guidance weight를 각 sampling 단계마다 high->low로 바꾸는 *oscillating guidance* 방법을 적용해 이를 해결했습니다.
+
+  
+
+(1) 샘플링 처음 시작 시 constant high guidance weight -> 텍스트를 강조
+
+(2) 이후 high guidance weight($$ w= 15  $$)는 강한 텍스트 정렬을 유지
+
+(3) 그 다음, low guidance weight($$ w= 1  $$)는 sturation artifact 줄이는 데 도움
+
+(2), (3) 번갈아서 weight 바꾸기.
+
+  
+
+하지만 **80×48 이상의 해상도**에서 진동 가이드를 적용했을 때는 샘플 품질 개선 없이 더 많은 시각적 아티팩트가 발생했습니다. 따라서 저자들은 이 진동 가이드를 기본 모델과 초기 두 개의 **SR(Super-Resolution) 모델**에만 적용했다고 합니다.
 
   
