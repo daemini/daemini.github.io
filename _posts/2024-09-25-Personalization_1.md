@@ -8,7 +8,7 @@ math: true
 date: 2024-09-25 18:10:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model,personalized content synthesis]     # TAG names should always be lowercase
-image: /posts/20240924_Personalization/fig6.png
+image: /posts/20240924_Personalization/thumbnail1.jpeg
 alt : Thumbnail
 author: Daemin
 ---
@@ -21,9 +21,9 @@ author: Daemin
 
 양이 조금 많아서 나누어 작성했습니다 (꾸벅.)
 
-1편 (현재 포스팅)  
-2편 -> 업로드 예정  
-3편 -> 업로드 예정  
+[1편, Methods ](https://daemini.github.io/posts/Personalization_1/) <- 현재 포스팅.  
+[2편, Tasks](https://daemini.github.io/posts/Personalization_2/)    
+[3편, Techniques](https://daemini.github.io/posts/Personalization_3/)  
 
 # TL;DR
 **Personalized Content Synthesis(PCS)** 를 optimization-based, learning-based로 구분하여, PCS분야의 여러가지 모델의 구조와 방법론을 정리한 **survey 논문**입니다.
@@ -160,7 +160,7 @@ U-Net backbone을 수정하여, adapter, cross attention layer와 같이 추가�
 ## Next Posting..
 다음 포스팅에서는 **Categorization of Personalization Tasks**을 중점적으로 다룰 예정입니다.
 
-[^1]: 이전 포스팅 : https://daemini.github.io/posts/DreamBooth/
+[^1]: [DreamBooth](https://daemini.github.io/posts/DreamBooth/)
 
 
 
