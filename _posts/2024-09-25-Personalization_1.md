@@ -21,7 +21,7 @@ author: Daemin
 
 양이 조금 많아서 나누어 작성했습니다 (꾸벅.)
 
-[1편, Methods ](https://daemini.github.io/posts/Personalization_1/) <- 현재 포스팅.  
+> [1편, Methods ](https://daemini.github.io/posts/Personalization_1/) <- 현재 포스팅.  
 [2편, Tasks](https://daemini.github.io/posts/Personalization_2/)    
 [3편, Techniques](https://daemini.github.io/posts/Personalization_3/)  
 
@@ -55,10 +55,10 @@ Optimization-based Framework에서 중요한 측면 중 하나는 **SoI를 텍�
 3. **Rare Token** : 자주 사용되지 않는 토큰을 사용해 일반적인 어휘에 미치는 영향을 최소화 하는 방법입니다. 하지만 이런 rare token은 유용한 정보를 제공하지 않아 텍스트 안에서 약한 표현력을 보이는 문제가 있습니다.
 
 #### Training Prompt Construction
-일반적으로 학습 프롬포트는 "*Photo of V**"로 구성되지만, DreamBooth[^1]  의 저자들은 이러한 단순한 설명보다는 "*Photo of V* cat*"같이 unique modifier를 사용해 학습 시간을 줄이면서 성능을 더 높일 수 있었습니다. 또한, 더 나은 SoI와 관련 없는 개념의 분리를 위해 각 훈련 참조에 대해 더 구체적인 텍스트 프롬프트가 사용될 수 있습니다 “*Photo of V* cat on the chair*”. 이는 고품질 캡션이 정확한 텍스트 제어를 더욱 향상시키는 경향이  있음을 시사합니다.
+일반적으로 학습 프롬포트는 "_Photo of V*_"로 구성되지만, DreamBooth[^1]  의 저자들은 이러한 단순한 설명보다는 "*Photo of V* cat*"같이 unique modifier를 사용해 학습 시간을 줄이면서 성능을 더 높일 수 있었습니다. 또한, 더 나은 SoI와 관련 없는 개념의 분리를 위해 각 훈련 참조에 대해 더 구체적인 텍스트 프롬프트가 사용될 수 있습니다 “*Photo of V* cat on the chair*”. 이는 고품질 캡션이 정확한 텍스트 제어를 더욱 향상시키는 경향이  있음을 시사합니다.
 
 #### Training Objective
-Optimization-based 방법의 주요 목표는 $$ \theta $$을 개인화 요청에 따라 refine 하여 $$ \theta' $$를 얻는 것이다.  이 과정은 **test-time fine-tuning**이라고 불리며, $$ \theta' $$ 을 조정하여 참조된 프롬프트에 따라 SoI를 재구성하는 것이 목적입니다.
+Optimization-based 방법의 주요 목표는 $$ \theta $$을 개인화 요청에 따라 refine 하여 $$ \theta' $$를 얻는 것입니다.  이 과정은 **test-time fine-tuning**이라고 불리며, $$ \theta' $$ 을 조정하여 참조된 프롬프트에 따라 SoI를 재구성하는 것이 목적입니다.
 
 $$ 
 \begin{equation}
@@ -68,17 +68,17 @@ $$
 
 혹은 이와는 다르게, learnable parameter에 변화를 주는 방법이 있습니다.
 - 토큰 임베딩 최적화 
-	 - [9, An image is worth one word], 
-	 - [13, p+: Ex- tended textual conditioning in text-to-image generation,]
+	- [9, An image is worth one word]
+	- [13, p+: Ex- tended textual conditioning in text-to-image generation]
 
 - 전체 확산 모델 최적화 
-	 - [10, Dreambooth]
+	- [10, Dreambooth]
 
 
 - 특정 매개변수 부분집합 최적화 
-	 - [14, Multi- concept customization of text-to-image diffusion]
-	  - [15, Key-locked rank one editing for text-to-image personalization]
-	  - [16, 1.  Svdiff: Compact parameter space for diffusion fine-tuning]
+	- [14, Multi- concept customization of text-to-image diffusion]
+	- [15, Key-locked rank one editing for text-to-image personalization]
+	- [16, 1.  Svdiff: Compact parameter space for diffusion fine-tuning]
 
 
 - 어댑터
@@ -86,9 +86,9 @@ $$
 	 - [18 Styledrop: Text-to-image synthesis of any style]
 
 - 새로운 매개변수의 도입(LoRA) 
-	 - [19, Mix-of-show: Decentralized low- rank adaptation for multi-concept customization of diffusion models]
-	  - [20, Hyperdreambooth: Hypernet- works for fast personalization of text-to-image models]
-	 - [21, Omg: Occlusion-friendly person- alized multi-concept generation in diffusion models]
+	- [19, Mix-of-show: Decentralized low- rank adaptation for multi-concept customization of diffusion models]
+	- [20, Hyperdreambooth: Hypernet- works for fast personalization of text-to-image models]
+	- [21, Omg: Occlusion-friendly person- alized multi-concept generation in diffusion models]
 
 #### Inference
 
@@ -122,7 +122,7 @@ Optimization-based 방법에서 사용한 unique modifier에서 영감을 받아
 
 _The framework initializes a new cross-attention module to fuse image features in the U-net_
 
-U-Net backbone을 수정하여, adapter, cross attention layer와 같이 추가적인 layer로 추가적인 시작적 입력을 통합합니다. 
+U-Net backbone을 수정하여, adapter, cross attention layer와 같이 추가적인 layer로 추가적인 시각적 입력을 통합합니다. 
 
 예를 들어 **IP-Adapter**[22, Ip-adapter: Text compatible image prompt adapter for text-to-image diffusion models]는 decoupled cross-attention 모듈을 훈련하여 이미지 특징과 텍스트 특징을 **별도로 처리**한 후, 소프트맥스 연산 후의 덧셈 결과를 최종 출력으로 정의합니다. 이 경우, 플레이스홀더는 필요하지 않습니다.
 
@@ -159,6 +159,11 @@ U-Net backbone을 수정하여, adapter, cross attention layer와 같이 추가�
 
 ## Next Posting..
 다음 포스팅에서는 **Categorization of Personalization Tasks**을 중점적으로 다룰 예정입니다.
+
+
+> [1편, Methods ](https://daemini.github.io/posts/Personalization_1/) <- 현재 포스팅.  
+[2편, Tasks](https://daemini.github.io/posts/Personalization_2/)    
+[3편, Techniques](https://daemini.github.io/posts/Personalization_3/)  
 
 [^1]: [DreamBooth](https://daemini.github.io/posts/DreamBooth/)
 
