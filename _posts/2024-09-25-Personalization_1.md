@@ -1,5 +1,5 @@
 ﻿---
-title: "[Paper Reivew] A Survey on Personalized Content Synthesis with Diffusion Models"
+title: "[Paper Reivew] A Survey on Personalized Content Synthesis with Diffusion Models-1"
 description: 개인화 이미지 생성을 정리한 Survey 논문입니다.
 toc: true
 comments: true
