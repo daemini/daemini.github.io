@@ -20,10 +20,10 @@ author: Daemin
 
 개인화 방법론을 정리한 1편에 이어, 개인화의 대표적인 task와 모델을 소개하는 포스팅입니다.
 
-
->[1편, Methods ](https://daemini.github.io/posts/Personalization_1/)
+  
+>[1편, Methods ](https://daemini.github.io/posts/Personalization_1/)  
 [2편, Tasks](https://daemini.github.io/posts/Personalization_2/) <- 현재 포스팅
-[3편, Techniques](https://daemini.github.io/posts/Personalization_3/)
+[3편, Techniques](https://daemini.github.io/posts/Personalization_3/)  
 
 
 ## 3. Categorization of Personalization Tasks
@@ -195,8 +195,8 @@ optimization method 방식으로,**Custom Diffusion**은 Cross attention key-Val
 짧게 요약이 참 힘드네요,,
 다음 포스팅에서는 개인화에서 사용되는 여러 테크닉을 다룹니다! 
 
->[1편, Methods ](https://daemini.github.io/posts/Personalization_1/)
-[2편, Tasks](https://daemini.github.io/posts/Personalization_2/) <- 현재 포스팅
+>[1편, Methods ](https://daemini.github.io/posts/Personalization_1/)  
+[2편, Tasks](https://daemini.github.io/posts/Personalization_2/) <- 현재 포스팅  
 [3편, Techniques](https://daemini.github.io/posts/Personalization_3/)
 
 
