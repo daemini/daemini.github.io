@@ -18,7 +18,7 @@ alt : Thumbnail
 > Google Research | Boston University <br/>
 > 25 Aug 2022 <br/>
 
-# 들어가며,,
+# TL;DR
 본 논문은 Text-to-Image(T2I) 모델에서 이전까지는 불가능했던 **'Personalization'**을 위한 방법론을 제시한다. **몇 장의 이미지를 입력**으로 받아 pretrained T2I model을 finetune하면 **특정 대상과 특정 식별자**를 학습할 수 있게된다. 이 방법론을 사용해 대상의 **key feature를 유지**하면서, recontextualization, text-guided view synthesis,  aritistic rendering 등을 가능하게 한다. 
 
 

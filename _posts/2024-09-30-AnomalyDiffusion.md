@@ -58,7 +58,7 @@ Extensive experiments를 통해, 우리 모델은 generation authenticity와 div
 > 요약하자면...
 > -   **기존 anomaly generation 방법들의 한계**: 많은 기존 방법들이 few-shot 문제에서 생생한 anomaly 생성에 실패하거나, anomaly와 mask 간의 alignment 문제를 해결하지 못함
 > -   두 가지 핵심 방법: **Spatial Anomaly Embedding**과 **Adaptive Attention Re-weighting Mechanism**으로 anomaly generation를 개선!
-> - Anomaly generation으로 생성된 이미지는 Downstram task에 도움이 되더라~
+> - Anomaly generation으로 생성된 이미지는 Downstream task에 도움이 되더라~
 {: .prompt-info }
 
 ## 2. Related Work
