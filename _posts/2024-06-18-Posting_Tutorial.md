@@ -5,7 +5,7 @@ toc: true
 comments: true
 # layout: default
 date: 2024-06-19 13:17:00 +09:00
-categories: [Blogging, Tutorial]
+categories: [Tutorial, Blog]
 tags: [markdown, tutorial, jekyll chripy]     # TAG names should always be lowercase
 image: /posts/20240618/devices-mockup.png
 alt : Responsive rendering of Chirpy theme on multiple devices.
