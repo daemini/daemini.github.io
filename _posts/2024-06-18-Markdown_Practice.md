@@ -4,9 +4,9 @@ description: 마크다운 문법을 간단히 요약한 포스트입니다.
 comments: true
 toc: true
 date: 2024-06-18 15:07:00 +09:00
-categories: [Blogging, Tutorial]
+categories: [Tutorial, Blog]
 tags: [markdown, tutorial]     # TAG names should always be lowercase
-image: posts/Markdown_Practice/markdown.png
+image: posts/20240618_Markdown_Practice/markdown.png
 alt : Responsive rendering of Chirpy theme on multiple devices.
 ---
 

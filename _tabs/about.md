@@ -10,3 +10,4 @@ order: 4
 > Artificial intelligence, Deep learning, Computer Vison, Generative Models<br>
 
 
+![me](/assets/img/me.png)
