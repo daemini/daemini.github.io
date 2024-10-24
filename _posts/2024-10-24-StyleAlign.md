@@ -8,7 +8,7 @@ math: true
 date: 2024-10-24 16:30:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, personalization, consistant style, style transfer]     # TAG names should always be lowercase
-image: /posts/20241024_StyleAlign/thumbnail.jpeg
+image: /posts/20241024_StyleAligned/thumbnail.jpeg
 alt : Thumbnail
 author: Daemin
 ---
@@ -30,7 +30,7 @@ author: Daemin
 - Diffusion Inversion을 이용해 Style Transfer Task에도 활용할 수 있지만, Inversion 방식의 한계가 있다!
 
 
-![teaser3](/posts/20241024_StyleAlign/teaser3.jpg){: width="800" height="300"}
+![teaser3](/posts/20241024_StyleAligned/teaser3.jpg){: width="800" height="300"}
 
 ## 1. Introduction
 
@@ -71,7 +71,7 @@ StyleDrop의 경우 adapter를 fine tuning하여 style personalization을 하려
 ### 3.1. Naïve Approach
 이를 달성하기 위한 naïve한 방법은 text-prompt에 같은 style을 적는 것일 겁니다. 
 
-![text_prompt](/posts/20241024_StyleAlign/text_prompt.png){: width="800" height="300"}
+![text_prompt](/posts/20241024_StyleAligned/text_prompt.png){: width="800" height="300"}
 
 뭐... 당연히(?) 잘 될리가 없습니다. 
 
@@ -89,7 +89,7 @@ $$
  $$
 
 
-![bottom](/posts/20241024_StyleAlign/bottom.png){: width="800" height="300"}
+![bottom](/posts/20241024_StyleAligned/bottom.png){: width="800" height="300"}
 
 하지만.... Content leakage가 발생합니다. (유니콘과 공룡색이 섞이는 등) 게다가 prompt set간의 이미지 diversity가 떨어진다는 문제가 있습니다. 
 
@@ -98,7 +98,7 @@ $$
 
 Content leakage, less diversity 문제를 해결하기 위해 저자들은 batch의 이미지 중 한장의 attention만 sharing 하는 방식을 실험했다고 합니다.
 
-![middle](/posts/20241024_StyleAlign/middle.png){: width="800" height="300"}
+![middle](/posts/20241024_StyleAligned/middle.png){: width="800" height="300"}
 
 Diverse한 이미지를 만드는 것은 어느정도 가능했지만, Style이 일관적이지 않았습니다. 저자들은 Reference image에서 Target image로의 attention flow가 약했기 때문이라고 추측합니다.
 
@@ -106,7 +106,7 @@ Content leakage, less diversity 문제를 해결하기 위해 저자들은 batch
 ### 3.4. Shared Attention W/ AdaIN
 > 'attention flow를 강하게 해주면 되겠네!' AdaIN은 reference의 Q, K를 사용해 target의 Q, K를 Normalize하는 방법! 
 
-![fig4](/posts/20241024_StyleAlign/fig4.png){: width="600" height="300"}
+![fig4](/posts/20241024_StyleAligned/fig4.png){: width="600" height="300"}
 
 $$
 \text{AdaIN}(x, y) = \sigma(y) \left( \frac{x - \mu(x)}{\sigma(x)} \right) + \mu(y)
@@ -131,7 +131,7 @@ V_r \\V_t
 $$
 
 
-![top](/posts/20241024_StyleAlign/top.png){: width="800" height="300"}
+![top](/posts/20241024_StyleAligned/top.png){: width="800" height="300"}
 
 diverse 한 이미지를 얻으면서도 style이 일관적인 것을 확인할 수 있습니다.
 
@@ -145,7 +145,7 @@ diverse 한 이미지를 얻으면서도 style이 일관적인 것을 확인할 
 ### 4.1. Ablation Study
 저자들은 Full Attention Sharing, Without Query-Key AdaIN, Full Method(StyleAlgined)로 ablation study를 진행했습니다.
 
-![fig6](/posts/20241024_StyleAlign/fig6.png){: width="600" height="300"}
+![fig6](/posts/20241024_StyleAligned/fig6.png){: width="600" height="300"}
 
 오른쪽 위로 갈 수록 스타일 일관성을 지키면서 text prompt에 맞는 이미지를 생성하는 좋은 모델입니다.
 
@@ -177,7 +177,7 @@ diverse 한 이미지를 얻으면서도 style이 일관적인 것을 확인할 
 #### **Style Alignment Control**
 -  저자들의 Shared-Attention을 Self-Attention 레이어 일부에만 적용하여 스타일 정렬의 정도를 제어할 수 있는 방법을 제시하였습니다.
 
-![fig8](/posts/20241024_StyleAlign/fig8.png){: width="600" height="300"}
+![fig8](/posts/20241024_StyleAligned/fig8.png){: width="600" height="300"}
 
 
 ### **StyleAligned from an Input Image**
@@ -186,19 +186,19 @@ diverse 한 이미지를 얻으면서도 style이 일관적인 것을 확인할 
 
 > 예를 들어, “A render of a house with a yellow roof”이라는 프롬프트로 DDIM Inversion을 하고, 'roof'를 'car', 'cat', 'cactus' 등으로 바꿔서 style 일관성을 유지하는 이미지 생성
 
-![fig9](/posts/20241024_StyleAlign/fig9.png){: width="600" height="300"}
+![fig9](/posts/20241024_StyleAligned/fig9.png){: width="600" height="300"}
 
 
 -   이 방법은 최적화 없이도 특정 입력 이미지의 스타일을 기반으로 새로운 이미지를 생성할 수 있었으나, DDIM Inversion 과정에서 실패하거나 궤적 오류가 발생할 수 있는 점이 단점으로 지적되었습니다.
 
-![fig13](/posts/20241024_StyleAlign/fig13.png){: width="800" height="300"}
+![fig13](/posts/20241024_StyleAligned/fig13.png){: width="800" height="300"}
 
 ### **Shared Self-Attention Visualization**
-![fig10](/posts/20241024_StyleAlign/fig10.png){: width="600" height="300"}
+![fig10](/posts/20241024_StyleAligned/fig10.png){: width="600" height="300"}
 
 Reference Image(기차) style로 만든 car, bull에서 self-attention map을 나타낸 것입니다. 주목할만한 점은, Query에 의미적으로 가까운 지점을 reference image에서 보고 있다는 점입니다. 이는 self-attention token이 단순한 전역 스타일 전이가 아니라, **의미적으로 적절한 방식**으로 스타일을 매칭한다는 것을 의미합니다.
 
-![fig11](/posts/20241024_StyleAlign/fig11.png){: width="600" height="300"}
+![fig11](/posts/20241024_StyleAligned/fig11.png){: width="600" height="300"}
 
 또한 Shared attention map의 주요 성분들을 시각화한 결과, 이미지 내 의미적으로 관련된 영역(예: 몸통, 머리, 배경 등)이 강조되는 것을 확인할 수 있었습니다.
 
@@ -210,7 +210,7 @@ Reference Image(기차) style로 만든 car, bull에서 self-attention map을 �
 
 이를 해결하기 위해 attention scaling을 rescaling($$ \lambda < 1 $$)하여 사용했다고 합니다.
 
-![fig15](/posts/20241024_StyleAlign/fig15.png){: width="600" height="300"}
+![fig15](/posts/20241024_StyleAligned/fig15.png){: width="600" height="300"}
 
 $$ \lambda  = 1 $$ 일 때, Reference image와 거의 유사한 이미지를 얻지만, 적절히 rescale 했더니 비슷한 스타일의 다른 이미지를 생성할 수 있었습니다.
 
@@ -219,13 +219,13 @@ $$ \lambda  = 1 $$ 일 때, Reference image와 거의 유사한 이미지를 얻
 -   StyleAligned는 훈련이나 최적화 없이도 **ControlNet**, **DreamBooth**, **MultiDiffusion**과 같은 다른 확산 기반 방법들과 쉽게 결합할 수 있었습니다.
 -   예를 들어, ControlNet과 결합하여 깊이 맵에 조건부로 스타일 정렬 이미지를 생성하거나, MultiDiffusion을 사용해 여러 스타일을 공유하는 파노라마 이미지를 생성하는 등의 예가 제시되었습니다.
 
-![controlnet](/posts/20241024_StyleAlign/controlnet1.jpg){: width="800" height="300"}
+![controlnet](/posts/20241024_StyleAligned/controlnet1.jpg){: width="800" height="300"}
 _controlnet_
 
-![DreamBooth](/posts/20241024_StyleAlign/db.jpg){: width="800" height="300"}
+![DreamBooth](/posts/20241024_StyleAligned/db.jpg){: width="800" height="300"}
 _DreamBooth_
 
-![multidiffusion](/posts/20241024_StyleAlign/multidiffusion.jpg){: width="800" height="300"}
+![multidiffusion](/posts/20241024_StyleAligned/multidiffusion.jpg){: width="800" height="300"}
 _multidiffusion_
 
 
