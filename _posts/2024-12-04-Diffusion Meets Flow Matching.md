@@ -65,7 +65,7 @@ $$
 간단한 대수적 연산을 통해 다음을 유도할 수 있습니다.
 
 $$ 
-{\bf z}_t = {\bf z}_{s} + \color{red}{{\bf u}} \color{black} \cdot (t - s) \text{,   for } s < t \text{,  where } \color{red}{\bf u} = {\boldsymbol \epsilon} - {\bf x}
+{\bf z}_t = {\bf z}_{s} + \color{red}{\bf u} \color{black} \cdot (t - s) \text{,   for } s < t \text{,  where } \color{red}{\bf u} = {\boldsymbol \epsilon} - {\bf x}
 $$
 
 여기서 $$ {\bf u} $$는 "velocity", "flow" 등으로 불립니다. 
@@ -236,7 +236,10 @@ $$
 
 
 ## SDE and ODE Perspective
-*c.f.* 맨 아랫줄만 읽어도 됩니다.
+수식이 너무 많아서 결론만 전달하자면 
+> 'Diffusion, flow matching 두 framework가 fundamentally **동일함을** 수식으로도 보일 수 있다.'
+
+(수식은 건너뛰어도 됩니다.)
 ### Diffusion models
 Forward process는 다음의 SDE로 표현할 수 있습니다.
 
@@ -287,14 +290,14 @@ $$
 f_t = \partial_t \log(\alpha_t) , \quad g_t^2 = 2 \alpha_t \sigma_t \partial_t (\sigma_t / \alpha_t) , \quad \eta_t = \varepsilon_t / (2 \alpha_t \sigma_t \partial_t (\sigma_t / \alpha_t))^{1/2} .
 $$
 
-수식이 너무 많아서 결론만 전달하자면 
-> 'Diffusion, flow matching 두 framework가 fundamentally 동일함을 수식으로도 보일 수 있다.'
+
 
 ## Closing takeaways
+이 포스팅을 통해 다음을 기억합시다!
 -   **Network output**:  
-    Flow matching은 network output으로 (기존 diffusion model 사용되는 것과 다른) vector field parametrization를 제안. Output은 higher-order samplers를 사용할 때 차이가 발생하며, training dynamics에도 영향
+    Flow matching은 network output으로 (기존 diffusion model 사용되는 것과 다른) **vector field parametrization**를 제안. Output은 higher-order samplers를 사용할 때 차이가 발생하며, training dynamics에도 영향
 
 -   **Sampling noise schedule**:  
-    Flow matching은  $$ \alpha_t = 1-t $$ $$ \sigma_t = t $$ sampling noise schedule 활용하며, 이는 DDIM과 동일.
+    Flow matching은  $$ \alpha_t = 1-t $$ $$ \sigma_t = t $$ sampling noise schedule 활용하며, 이는 **DDIM과 동일.**
     
 
