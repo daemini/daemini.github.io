@@ -6,5 +6,37 @@
   .bundle
 {%- endif -%}
 ';
+sup a {
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
 
-/* append your custom style below */
+sup a:hover::after {
+  content: attr(data-title) "\A" attr(data-author) "\A" attr(data-journal); /* 여러 줄 표시 */
+  position: absolute;
+  top: 1.5em;
+  left: 0;
+  background: #fff; /* 배경색 하얀색 */
+  color: #000; /* 텍스트 검정색 */
+  padding: 1em; /* 여백 조정 */
+  border-radius: 0.5em;
+  white-space: pre-line; /* 여러 줄 표시 */
+  font-size: 1rem; /* 글씨 크기 */
+  line-height: 1.5; /* 줄 간격 */
+  max-width: 400px; /* 가로 너비 확장 */
+  z-index: 10;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+  font-family: Arial, sans-serif; /* 기본 글씨체 */
+  font-weight: normal;
+}
+
+sup a:hover::after {
+  font-weight: normal; /* 기본 텍스트는 보통 두께 */
+}
+
+sup a:hover::after strong {
+  font-weight: bold; /* 제목 부분 굵게 */
+  display: block; /* 블록 형태로 처리하여 가독성 증가 */
+  margin-bottom: 0.5em; /* 제목 아래 여백 추가 */
+}
