@@ -214,6 +214,14 @@ real image에서도 어느정도 잘 동작하지만, 많은 경우 inversion이
 
 1. Text-to-Image Diffusion 모델에서 **Cross-attention Layer**는 텍스트 프롬프트와 생성된 이미지의 공간 레이아웃을 연결하는 중요한 역할을 함.
 
-2. 텍스트 프롬프트의 조작으로 생성 이미지의 속성을 직관적이고 유연하게 제어할 수 있음.
+2. 텍스트 프롬프트의 조작으로 생성 이미지의 속성을 직관적이고 유연하게 제어할 수 있음. <sup>
+  <a href="#" 
+     data-title="**Flow straight and fast: Learning to generate and transfer data with rectified flow**" 
+     data-author="X. Liu, C. Gong, Q. Liu" 
+     data-journal="arXiv preprint arXiv:2209.03003. 2022.">[1]</a>
+</sup>.
+
+<span id="footnote1">[1]:</span> **Flow straight and fast: Learning to generate and transfer data with rectified flow**  
+X. Liu, C. Gong, Q. Liu. arXiv preprint arXiv:2209.03003. 2022.
 
 
