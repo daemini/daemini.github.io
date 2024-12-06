@@ -134,7 +134,7 @@ $$
 
 
 #### **Adding a New Phrase**
-![ 99_imagen_results_web-03](/posts/20241029_P2P/99_imagen_results_web-03.png){: width="800" height="300"}
+![ 99_imagen_results_web-03](/posts/20241029_P2P/99_imagen_results_web-03.png){: width="700" height="300"}
 
 사용자가 새로운 token을 추가하는 경우, common detail을 보존하기 위해, 공통된 단어에만 attention injection을 했다고 합니다. 이를 위해 **Alignment function** $$ A $$를 사용해 $$ \mathcal{P}^*$$의 token index를 $$ \mathcal{P}$$의 대응 토큰으로 mapping 합니다.
 
@@ -149,7 +149,7 @@ $$
 
 
 #### **Attention Re–weighting**
-![ 99_imagen_results_web-04](/posts/20241029_P2P/99_imagen_results_web-04.png){: width="800" height="300"}
+![ 99_imagen_results_web-04](/posts/20241029_P2P/99_imagen_results_web-04.png){: width="700" height="300"}
 
 사용자가 프롬프트의 특정 토큰이 이미지에 미치는 영향을 강화하거나 약화하고자 할 때(예: "a fluffy red ball"에서 "fluffy"의 영향을 조정), 이를 세밀하게 조작할 방법이 필요합니다.
 
@@ -174,21 +174,21 @@ User가 제공하는 마스크 없이 prompt만으로 localized editing을 할 �
 
 - 단어를 완전히 바꾸는 것뿐만 아니라, 새로운 단어를 추가하는 것도 가능합니다.
 
-![fig7_a](/posts/20241029_P2P/fig7_a.png){: width="800" height="300"}
+![fig7_a](/posts/20241029_P2P/fig7_a.png){: width="700" height="300"}
 
 
 #### Global editing
 Global한 수정을 하면서도, 이미지 구성을 유지하는 것이 목표입니다. 이미지의 전체적인 부분에 영향을 미치면서도, object의 위치와 정체성 같은 정보는 유지해야 하는 것입니다.
 
 
-![fig7_b](/posts/20241029_P2P/fig7_b.png){: width="800" height="300"}
+![fig7_b](/posts/20241029_P2P/fig7_b.png){: width="700" height="300"}
 
 #### Fader Control using Attention Re-weighting
 프롬프트만으로 원하는 이미지를 완벽히 제어하기 어려운 경우도 존재합니다. 예를 들어, snowy mountain에서 눈의 양을 어떻게 조절할 수 있을까요?
 
 저자들은 특정 단어의 attention을 Re-scaling을 통해 이를 해결했다고 합니다.
 
-![fig9](/posts/20241029_P2P/fig9.png){: width="800" height="300"}
+![fig9](/posts/20241029_P2P/fig9.png){: width="700" height="300"}
 
 
 #### Real Image Editing
@@ -196,16 +196,16 @@ Global한 수정을 하면서도, 이미지 구성을 유지하는 것이 목표
 
 DDIM 기반의 deterministic한 방법을 사용해, diffusion process를 역으로 진행했다고 합니다.
 
-![fig10](/posts/20241029_P2P/fig10.png){: width="800" height="300"}
+![fig10](/posts/20241029_P2P/fig10.png){: width="700" height="300"}
 
 real image에서도 어느정도 잘 동작하지만, 많은 경우 inversion이 제대로 이루어지지 않는 경우가 존재했다고 합니다. 저자들은 이런 현상은 distortion-editability tradeoff 문제 때문일 수 있다고 합니다.
 
-![fig11](/posts/20241029_P2P/fig11.png){: width="800" height="300"}
+![fig11](/posts/20241029_P2P/fig11.png){: width="700" height="300"}
 
 
 이를 해결하기 위해 저자들은 수정되지 않은 원빈 이미지의 영역을 마스크를 통해 복원했다고 합니다. 이 mask는 attention map에서 자동으로 추출되며, 사용자의 개입이 필요 없습니다. 
 
-![fig12](/posts/20241029_P2P/fig12.png){: width="800" height="300"}
+![fig12](/posts/20241029_P2P/fig12.png){: width="700" height="300"}
 
 
 
