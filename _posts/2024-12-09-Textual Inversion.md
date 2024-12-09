@@ -1,11 +1,25 @@
-﻿
+﻿---
+title: "[Paper Reivew] An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion"
+description: T2I 모델의 텍스트 임베딩 공간에서 pseudo-words를 학습하는 Textual Inversion 방법론을 제안합니다. 이를 통해 사용자는 사전 학습된 모델의 구조를 변경하지 않고 개인화된 concept을 캡처하고 새로운 장면에 삽입할 수 있습니다.
+toc: true
+comments: true
+# layout: default
+math: true
+date: 2024-12-09 18:30:00 +09:00
+categories: [Deep Learning, Generative Model]
+tags: [diffusion model, generative model, personalization, inversion]     # TAG names should always be lowercase
+image: /posts/20241209_Textual_Inversion/teaser.webp
+alt : Thumbnail
+author: Daemin
+---
+
 > ICLR 2023 notable-top-25% [[Paper]](https://arxiv.org/abs/2208.01618), [[Page]](https://textual-inversion.github.io/) <br/> 
 > Rinon Gal, Yuval Alaluf, Yuval Atzmon, Or Patashnik, Amit H. Bermano, Gal Chechik, Daniel Cohen-Or <br/> 
 > Tel-Aviv University, NVIDIA <br/> 
 > 2 Aug 2022
 
 # TL;DR
-T2I 모델의 텍스트 임베딩 공간에서 **pseudo-words**를 학습하는 **Textual Inversion** 방법론을 제안합니다. 이를 통해 사용자는 사전 학습된 모델의 구조를 변경하지 않고 개인화된 concept을 캡처하고 새로운 장면에 삽입할 수 있습니다.
+T2I 모델의 텍스트 임베딩 공간에서 **pseudo-words**를 학습하는 **Textual Inversion** 방법론을 제안합니다. 이를 통해 사용자는 사전 학습된 모델의 구조를 변경하지 않고 개인화된 concept을 캡처하고 새로운 장면에 삽입할 수 있습니다.
 
 ## 1. Introduction
 
