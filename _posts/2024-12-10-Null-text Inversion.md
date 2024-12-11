@@ -249,7 +249,3 @@ Real image editing을 평가할만한 효과적인 metric이 없으므로, user 
 
 $$ \rightarrow $$ 이를통해 real image를 모델 튜닝 없이 직관적인 텍스트 기반 편집을 가능하게 함.
 
-
-
-
-
