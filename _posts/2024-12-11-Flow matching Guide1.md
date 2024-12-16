@@ -1,5 +1,5 @@
 ﻿---
-title: "[Paper Reivew] Flow Matching Gudie and Code - 1"
+title: "[Paper Reivew] Flow Matching Gudie and Code-(2. Quick tour)"
 description: Flow matching의 comprehensive and self-contained reviewd 입니다.
 toc: true
 comments: true
@@ -8,7 +8,7 @@ math: true
 date: 2024-12-11 16:28:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, flow matching]     # TAG names should always be lowercase
-image: /posts/20241211_FM_guide/teaser.jpeg
+image: /posts/20241211_FM_guide/teaser1.jpeg
 alt : Thumbnail
 author: Daemin
 ---
@@ -20,6 +20,15 @@ author: Daemin
 
 
 리키 첸이 설명하는 Flow matching...  83페이지나 되네요.
+
+<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
+  <summary>Show More</summary>
+  <p>
+    <li><a href="/posts/Flow-matching-Guide1" style="color: black;"><b>1편. Introduction + Quick tour (Current Post)</b></a></li>
+    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
+    <li><a href="/posts/Flow-matching-Guide3" style="color: black;">3편. Flow Matching</a></li>
+  </p>
+</details>
 
 
 # TL;DR
@@ -204,16 +213,11 @@ $$
 ![code1](/posts/20241211_FM_guide/code1.png){: width="800" height="300"}
 
 
-
-
-<details>
-  <summary>Details</summary>
+<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
+  <summary>Show More</summary>
   <p>
-  임의의 $$ 0 \leq t < s \leq 1 $$에 대해서 다음을 만족합니다.
-	$$
-	X_s = \psi_s(\psi_t^{-1}(\psi_t(X_0))) = \psi_{s|t}(X_t)
-	$$
-	
-	즉, $$ X_t $$ 이후의 state는 $$ X_t $$에만 의존함을 의미하므로, Markov 입니다.	
+    <li><a href="/posts/Flow-matching-Guide1" style="color: black;"><b>1편. Introduction + Quick tour (Current Post)</b></a></li>
+    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
+    <li><a href="/posts/Flow-matching-Guide3" style="color: black;">3편. Flow Matching</a></li>
   </p>
 </details>
