@@ -430,9 +430,12 @@ $$
 이를 이용하면 다음을 얻을 수 있습니다.
 
 $$
-\color{green} u_t(x) \color{black} = \dot{\alpha}_t \color{blue} \mathbb{E} \left[ X_1 \mid X_t = x \right]\color{black} + \dot{\sigma}_t \color{red} \mathbb{E} \left[ X_0 \mid X_t = x \right] \color{black} \\
-= \frac{\dot{\sigma}_t}{\sigma_t} x + \left[ \dot{\alpha}_t - \alpha_t \frac{\dot{\sigma}_t}{\sigma_t} \right] \color{blue} \mathbb{E} \left[ X_1 \mid X_t = x \right]\color{black}\\
-= \frac{\dot{\alpha}_t}{\alpha_t} x + \left[ \dot{\sigma}_t - \sigma_t \frac{\dot{\alpha}_t}{\alpha_t} \right] \color{red}\mathbb{E} \left[ X_0 \mid X_t = x \right]
+\begin{aligned}
+\color{green} u_t(x) \color{black} 
+&= \dot{\alpha}_t \color{blue} \mathbb{E} \left[ X_1 \mid X_t = x \right]\color{black} + \dot{\sigma}_t \color{red} \mathbb{E} \left[ X_0 \mid X_t = x \right] \color{black} \\
+&= \frac{\dot{\sigma}_t}{\sigma_t} x + \left[ \dot{\alpha}_t - \alpha_t \frac{\dot{\sigma}_t}{\sigma_t} \right] \color{blue} \mathbb{E} \left[ X_1 \mid X_t = x \right]\color{black}\\
+&= \frac{\dot{\alpha}_t}{\alpha_t} x + \left[ \dot{\sigma}_t - \sigma_t \frac{\dot{\alpha}_t}{\alpha_t} \right] \color{red}\mathbb{E} \left[ X_0 \mid X_t = x \right]
+\end{aligned}
 $$
 
 이를 deterministic function으로 다음과 같이 쓸 수 있습니다.
