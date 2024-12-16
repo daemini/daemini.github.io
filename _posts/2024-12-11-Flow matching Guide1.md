@@ -21,15 +21,6 @@ author: Daemin
 
 리키 첸이 설명하는 Flow matching...  83페이지나 되네요.
 
-<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
-  <summary>Show More</summary>
-  <p>
-    <li><a href="/posts/Flow-matching-Guide1" style="color: black;"><b>1편. Introduction + Quick tour (Current Post)</b></a></li>
-    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
-    <li><a href="/posts/Flow-matching-Guide3" style="color: black;">3편. Flow Matching</a></li>
-  </p>
-</details>
-
 
 # TL;DR
 This guide offers a comprehensive and self-contained review of FM, covering its mathematical foundations, design choices, and extensions.
@@ -212,12 +203,3 @@ $$
 
 ![code1](/posts/20241211_FM_guide/code1.png){: width="800" height="300"}
 
-
-<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
-  <summary>Show More</summary>
-  <p>
-    <li><a href="/posts/Flow-matching-Guide1" style="color: black;"><b>1편. Introduction + Quick tour (Current Post)</b></a></li>
-    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
-    <li><a href="/posts/Flow-matching-Guide3" style="color: black;">3편. Flow Matching</a></li>
-  </p>
-</details>
