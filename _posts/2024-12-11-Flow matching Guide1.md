@@ -23,63 +23,45 @@ author: Daemin
 
 
 # TL;DR
-This guide offers a comprehensive and self-contained review of FM, covering its mathematical foundations, design choices, and extensions.
 
+- Flow Matching(FM)은 velocity field를 학습해 소스 분포 $$ p $$를 타겟 분포 $$ q $$ 로 변환하는 확률 경로 $$ p_t $$를 만드는 framework.
+- FM은 다양한 상태 공간(이산, 리만 다양체)과 마르코프 과정(CTMC, CTMP)으로 확장 가능하며, Diffusion Models 등 기존 모델들을 통합적으로 이해할 수 있는 틀을 제공.
+​
 
 ## 1. Introduction
-**Flow matching** (FM)은 간단한 framework로 많은 분야에서 SOTA 성능을 달성했습니다. FM은 velocity field를 학습하는 것을 목표로 하는데, 각 velocity field는 simulation이라 불리는 ODE를 풂으로써 flow $$ \psi_t $$를 정의합니다. Flow 는 1) deterministic, 2) time-continuous 3) bijective transformation(가역 변환) 입니다.
+**Flow matching**이란 velocity field 학습을 위한 framework입니다. 각 velocity field는 ODE를 풂으로써, flow $$ \psi_t $$를 정의합니다.
 
----
-#### **Goal** 
-Flow matching의 목표는 source sample $$ X_0  \sim p $$에서 target sample $$ X_1 := \psi_1(X_0) $$ 로 가는 flow를 만드는 것입니다. 
+Flow matching의 목표는 source sample $$ X_0  \sim p $$에서 target sample $$ X_1 := \psi_1(X_0) $$ 로 가는 **flow**를 만드는 것입니다. (제일 왼쪽 그림)
 
-![fig1_a](/posts/20241211_FM_guide/fig1_a.png){: width="400" height="300"}
+![fig1](/posts/20241211_FM_guide/fig1.png){: width="800" height="300"}
 
----
-예전 Flow matching (Continuous Normalizing Flows, CNFs) 은 likelihood $$ p(X_1) $$를 최대화 하는 방식으로 training 했는데, training 과정에서 **simulation, differentiation**이 필요해 computational cost가 컸습니다. 
+뒤에서는 위 과정(Flow, diffusion, jump, CTMC in discrete space)들을 포함한 어떠한 **modality던**, 어떤 **general CTMP**이던, **Generator Matching**으로 통합하는 과정을 설명합니다.
 
-이후 simulation 없이 CNF를 학습하는 시도가 최근 연구 결과라고 합니다. 최근의 flow matching framework는 two step으로 구성됩니다.   
+> CTMC = Continuous Time Markov Chains   
+> CTMP = Continuous Time Markov Processes
 
-1) Source $$ p $$와 target $$ q $$를 잇는 **probability path** $$ p_t $$ 고르기  
-2) **velocity field** (neural net)를 학습시켜, flow $$ \psi_t $$ 와 $$ p_t $$ 구현
+이렇게 GM으로 확장해도 결국 2가지 step으로 구성된다는 것을 명심해야 합니다.
+
+1. Source $$ p $$와 target $$ q $$를 잇는 **probability path** $$ p_t $$ 고르기
+2. **Generator**를 학습시켜, $$ p_t $$를 implement하는 **CTMP**를 정의
+
+> 예를 들어 FM에서는 
+>  **velocity field**를 학습하여,  $$ p_t $$를 implement하는 $$ \psi_t $$ 를 정의합니다.
+
 
 ![fig2](/posts/20241211_FM_guide/fig2.png){: width="800" height="300"}
 
 
-#### **확장 가능성**
-FM은 Euclidean space, $$ \mathbb{R}^d $$에서 state space $$ \mathcal{S} $$로 확장 가능하며, 심지어는 flow가 아닌 process로도 확장할 수 있습니다. 
-
-- **Discrete Flow Matching, (CTMC)** : time-continuous Markov processes on discrete state spaces
-- **Riemannian Flow Matching** : flow를 Riemannian manifolds $$ \mathcal{S} = \mathcal{M} $$으로 확장하여 SOTA
-- **Generator Matching** : flow matching framework를 일반화하여, general Continuous Time Markov Processes **(CTMP)**
-
-
-
 #### **Diffusion model과의 관계**
+사실 CTMP 과정을 simulation-free training 방법으로 접근한 것은 **Diffusion model**이 먼저라고 합니다. 
 
-사실 CTMP 과정을 simulation-free training 방법으로 접근한 것은 Diffusion model입니다. Diffusion model은 DDPM에서 discrete time Gaussian process로 시작되어, [Score-Based Generative Modeling through Stochastic Differential Equations (SDE)](https://daemini.github.io/posts/SDE/)에서 continuous time SDE 로 확장된 것입니다.
-
-Flow matching 관점에서 Diffusion model은 
-1. 특정 SDE로부터 모델링 된 "**forward noising process**"로 probability path $$ p_t $$를 구성합니다. 이 SDE 들은 closed form marginal probabilities를 가지며, score function을 통해 diffusion process의 generator를 parameterize 합니다. 
-2. 이런 parameterization는 forward process를 거꾸로 하는 방식으로 진행되며 결과적으로 diffusion model은 marginal probabilities의 score function을 학습하게 됩니다.
+Flow matching 관점에서 Diffusion model은
+ 
+1. 특정 SDE로부터 모델링 된 "**forward noising process**"로 source와 target을 interpolate하는 **probability path** $$ p_t $$를 구성합니다. 이 SDE 들은 closed form marginal probabilities를 가지며, score function을 통해 diffusion process의 generator를 parameterize 합니다. 
+2. 이런 **parameterization는** forward process를 **거꾸로** 하는 방식으로 진행되며 결과적으로 diffusion model은 marginal probabilities의 **score function**을 학습하게 됩니다.
 
 기존의 **score 함수** 외에도 **noise prediction**, **denoisers**, **v-prediction** 같은 대안적 접근법이 제안되었는데, 우연히도 **v-prediction**은 특정 확률 경로 $$ p_t $$ ​에 대한 velocity prediction과 일치합니다.
 
-----
--   **Section 2**: PyTorch로 Vanilla Flow Matching을 이해하고 구현하기 위한 "Cheat-sheet" 제공.
--   **Section 3**: 연속 상태 공간에서 가장 간단한 CTMP인 Flow 모델에 대한 엄밀한 설명.
--   **Section 4**: $$ \mathbb{R}^d $$에서의 Flow Matching 프레임워크와 다양한 설계 선택 및 확장 소개.
--   **Section 5**: 리만 기하학으로의 확장.
--   **Section 6**: 이산 상태 공간에서의 CTMC 및 생성 모델로서의 활용.
--   **Section 7**: Flow Matching을 CTMC로 확장.
--   **Section 8**: 임의의 상태 공간에 대해 CTMP를 생성 모델로 사용하는 방법.
--   **Section 9**: Generator Matching (GM):
-    -   다양한 모달리티를 아우르며 CTMP를 학습할 수 있는 확장 가능한 프레임워크.
-    -   이전 섹션의 모든 모델을 통합하는 공통 프레임워크 제공.
--   **Section 10**: Diffusion 모델을 FM 계열 모델의 특정 사례로 설명.
-
-
-----
 
 
 ## 2. Quick tour and key concepts
@@ -92,10 +74,10 @@ Flow matching 관점에서 Diffusion model은
 1. <span  style="background-color:#FFE6E6"> **probability path**, $$ (p_t)_{0 \leq t \leq 1} $$ </span> : 
 	- known source distribution $$ p_0 = p $$로부터, target distribution $$ p_1 = q$$로 이어지는 확률 경로.
 2. <span  style="background-color:#fff5b1"> **Velocity field**, $$ u_t $$ </span> : 
-	- 확률 경로를 따라 샘플이 이동하는 순간적인 속도를 기술하는 <span  style="background-color:#E6E6FA">**Velocity field**, $$ u_t^\theta $$ </span> 를 신경망으로 학습.
-	- 학습이 끝난 뒤, target 분포 $$  X_1 \sim q $$에서 sampling 가능! 
+	- Probability path $$ p_t $$를 따라 샘플이 이동하는 순간적인 속도를 나타내는 <span  style="background-color:#E6E6FA">**Velocity field**, $$ u_t^\theta $$ </span> 를 신경망으로 학습.
+	- 학습이 끝난 뒤, target 분포 $$  X_1 \sim q $$에서 sampling 가능!
 		1. Source 분포 $$ X_0 \sim p $$에서 sampling 하고,
-		2. <span  style="background-color:#E6E6FA"> $$ u_t^\theta $$ </span> 로 정해지는 ODE 풀기
+		2. <span  style="background-color:#E6E6FA"> $$ u_t^\theta $$ </span> 로 정해지는 ODE 풀기.
 
 --- 
 
@@ -138,7 +120,7 @@ $$
 p_t(x) = \int p_{t|1}(x|x_1) q(x_1) dx_1, \quad \text{where } p_{t|1}(x|x_1) = \mathcal{N}(x | t x_1, (1 - t)^2 I).
 $$
 
-이 path는 **conditional optimal-transport or linear path**라 하는 이상적인 특징이 있습니다. 이를 이용하면 Random variable $$ X_t $$를 다음과 같이 정의할 수 있습니다.
+이 path는 **conditional optimal-transport or linear path**라 불리는데, 뒤에서 다룰 이상적인 특징이 있다고 합니다. 이를 이용하면 Random variable $$ X_t $$를 다음과 같이 정의할 수 있습니다.
 
 $$
 X_t = t X_1 + (1 - t) X_0 \sim p_t.  
@@ -159,7 +141,7 @@ $$
 \mathcal{L}_{FM}(\theta) = \mathbb{E}_{t, X_t} \left[ \| u^\theta_t(X_t) - u_t(X_t) \|^2 \right], \quad t \sim \mathcal{U}[0,1], \, X_t \sim p_t.
 $$
 
-하지만.. <span  style="background-color:#FFE6E6"> **probability path**, $$ p_t $$ </span>는 두 개의 고차원 분포 사이의 *joint* transformation을 gorverning하므로 직접 구현은 어렵다고 합니다.
+하지만.. <span  style="background-color:#FFE6E6"> **probability path**, $$ p_t $$ </span>는 두 개의 고차원 분포 사이의 **joint transformation**을 gorverning하므로 직접 구현은 어렵다고 합니다.
 
 다행히도, single target example에 대해 **conditioning**만 해준다면 상당히 간단하게 이를 해결할 수 있다고 합니다. 따라서 $$ X_t $$를 conditioning 해주면 다음과 같습니다.
 
@@ -193,8 +175,11 @@ $$
 $$ \mathcal{L}_{\text{CFM}}(\theta) $$에 대입하면,
 
 $$
-\mathcal{L}_{\text{CFM}}^{\text{OT,Gauss}}(\theta) = \mathbb{E}_{t, X_0, X_1} \| u_t^\theta(X_t) - (X_1 - X_0) \|^2, 
-\quad \text{where } t \sim \mathcal{U}[0, 1], X_0 \sim \mathcal{N}(0, I), X_1 \sim q.
+\mathcal{L}_{\text{CFM}}^{\text{OT,Gauss}}(\theta) = \mathbb{E}_{t, X_0, X_1} \| u_t^\theta(X_t) - (X_1 - X_0) \|^2 
+$$
+
+$$
+\text{where } t \sim \mathcal{U}[0, 1], X_0 \sim \mathcal{N}(0, I), X_1 \sim q.
 $$
 
 > 한 줄 요약.  

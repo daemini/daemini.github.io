@@ -13,16 +13,8 @@ alt : Thumbnail
 author: Daemin
 ---
 
-# Series of Flow Matching
-
-<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
-  <summary>Show More</summary>
-  <p>
-    <li><a href="/posts/Flow-matching-Guide1" style="color: black;">1편. Introduction + Quick tour </a></li>
-    <li><a href="/posts/Flow-matching-Guide2" style="color: black;"><b>2편. Flow models (Current Post)</b></a></li>
-    <li><a href="/posts/Flow-matching-Guide3" style="color: black;">3편. Flow Matching</a></li>
-  </p>
-</details>
+## 이전 포스팅
+[1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)
 
 
 ## 3. Flow models
@@ -288,7 +280,7 @@ $$
 > 4. Source sample에서 target sample을 계산하려면 **ODE** 풀어야 함! 
 
 
-
+## Series of Flow Matching
 
 <details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
   <summary>Show More</summary>
