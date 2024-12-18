@@ -1,6 +1,6 @@
 ﻿---
 title: "[Paper Reivew] Flow Matching Gudie and Code-(2. Quick tour)"
-description: Flow matching의 comprehensive and self-contained reviewd 입니다.
+description: Flow matching의 comprehensive, self-contained review 입니다.
 toc: true
 comments: true
 # layout: default
@@ -13,7 +13,7 @@ alt : Thumbnail
 author: Daemin
 ---
 
-> NeurIPS 2024 Tutorial (?) [[Paper](https://arxiv.org/abs/2412.06264)] [[Page](https://github.com/facebookresearch/flow_matching)] <br/>
+> NeurIPS 2024 Tutorial (?) [[Paper](https://arxiv.org/abs/2412.06264)] [[github](https://github.com/facebookresearch/flow_matching)] <br/>
 > Yaron Lipman, Marton Havasi, Peter Holderrieth, Neta Shaul, Matt Le, Brian Karrer, Ricky T. Q. Chen, David Lopez-Paz, Heli Ben-Hamu, Itai Gat <br/>
 > FAIR at Meta | MIT CSAIL | Weizmann Institute of Science <br/>
 > 9 Dec 2024 <br/>
