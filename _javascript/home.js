@@ -1,7 +1,8 @@
 import { basic, initSidebar, initTopbar } from './modules/layouts';
-import { initLocaleDatetime } from './modules/plugins';
+import { initLocaleDatetime, loadImg } from './modules/components';
 
+loadImg();
+initLocaleDatetime();
 initSidebar();
 initTopbar();
-initLocaleDatetime();
 basic();
