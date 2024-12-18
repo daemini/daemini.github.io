@@ -1,6 +1,6 @@
 ﻿---
 title: "[Paper Reivew] Flow Matching Gudie and Code-(2. Quick tour)"
-description: Flow matching의 comprehensive and self-contained reviewd 입니다.
+description: Flow matching의 comprehensive, self-contained review 입니다.
 toc: true
 comments: true
 # layout: default
@@ -13,22 +13,13 @@ alt : Thumbnail
 author: Daemin
 ---
 
-> NeurIPS 2024 Tutorial (?) [[Paper](https://arxiv.org/abs/2412.06264)] [[Page](https://github.com/facebookresearch/flow_matching)] <br/>
+> NeurIPS 2024 Tutorial (?) [[Paper](https://arxiv.org/abs/2412.06264)] [[github](https://github.com/facebookresearch/flow_matching)] <br/>
 > Yaron Lipman, Marton Havasi, Peter Holderrieth, Neta Shaul, Matt Le, Brian Karrer, Ricky T. Q. Chen, David Lopez-Paz, Heli Ben-Hamu, Itai Gat <br/>
 > FAIR at Meta | MIT CSAIL | Weizmann Institute of Science <br/>
 > 9 Dec 2024 <br/>
 
 
 리키 첸이 설명하는 Flow matching...  83페이지나 되네요.
-
-<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
-  <summary>Show More</summary>
-  <p>
-    <li><a href="/posts/Flow-matching-Guide1" style="color: black;"><b>1편. Introduction + Quick tour (Current Post)</b></a></li>
-    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
-    <li><a href="/posts/Flow-matching-Guide3" style="color: black;">3편. Flow Matching</a></li>
-  </p>
-</details>
 
 
 # TL;DR
@@ -212,12 +203,3 @@ $$
 
 ![code1](/posts/20241211_FM_guide/code1.png){: width="800" height="300"}
 
-
-<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
-  <summary>Show More</summary>
-  <p>
-    <li><a href="/posts/Flow-matching-Guide1" style="color: black;"><b>1편. Introduction + Quick tour (Current Post)</b></a></li>
-    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
-    <li><a href="/posts/Flow-matching-Guide3" style="color: black;">3편. Flow Matching</a></li>
-  </p>
-</details>
