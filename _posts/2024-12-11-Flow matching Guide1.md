@@ -26,7 +26,13 @@ author: Daemin
 
 - Flow Matching(FM)은 velocity field를 학습해 소스 분포 $$ p $$를 타겟 분포 $$ q $$ 로 변환하는 확률 경로 $$ p_t $$를 만드는 framework.
 - FM은 다양한 상태 공간(이산, 리만 다양체)과 마르코프 과정(CTMC, CTMP)으로 확장 가능하며, Diffusion Models 등 기존 모델들을 통합적으로 이해할 수 있는 틀을 제공.
-​
+
+
+## 전체 포스팅
+
+- [1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)  
+- [2편, Flow Models](https://daemini.github.io/posts/Flow-matching-Guide2/)  
+- [3편, Flow Mathcing](https://daemini.github.io/posts/Flow-matching-Guide3/)  ​
 
 ## 1. Introduction
 **Flow matching**이란 velocity field 학습을 위한 framework입니다. 각 velocity field는 ODE를 풂으로써, flow $$ \psi_t $$를 정의합니다.
@@ -188,3 +194,8 @@ $$
 
 ![code1](/posts/20241211_FM_guide/code1.png){: width="800" height="300"}
 
+## 전체 포스팅
+
+- [1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)  
+- [2편, Flow Models](https://daemini.github.io/posts/Flow-matching-Guide2/)  
+- [3편, Flow Mathcing](https://daemini.github.io/posts/Flow-matching-Guide3/)  

@@ -8,22 +8,15 @@ math: true
 date: 2024-12-16 13:30:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, flow matching]     # TAG names should always be lowercase
-image: /posts/20241211_FM_guide/t3.png
+image: /posts/20241211_FM_guide/teaser3.jpeg
 alt : Thumbnail
 author: Daemin
 ---
 
 # 전체 포스팅
-
-
-<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
-  <summary>Show More</summary>
-  <p>
-    <li><a href="/posts/Flow-matching-Guide1" style="color: black;">1편. Introduction + Quick tour </a></li>
-    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
-    <li><a href="/posts/Flow-matching-Guide3" style="color: black;"><b>3편. Flow Matching (Current Post)</b></a></li>
-  </p>
-</details>
+- [1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)  
+- [2편, Flow Models](https://daemini.github.io/posts/Flow-matching-Guide2/)  
+- [3편, Flow Mathcing](https://daemini.github.io/posts/Flow-matching-Guide3/)  
 
 ## 4. Flow Matching
 **Flow Matching (FM)**은 "**Flow Matching Problem**" 이라는 문제를 풀기위한, **flow model**, $$ u_t^\theta $$를 학습하기 위한 scalable 방법론입니다.
@@ -67,7 +60,6 @@ $$
 e.g. Gaussian noise에서 이미지 generate.
 
 - Dependent :
-
 $$
 (X_0, X_1) \sim \pi_{0,1}(X_0, X_1),
 $$
@@ -158,18 +150,18 @@ $$
 u_t(x) = \int u_t(x|z) p_{Z|t}(z|x) \, dz = \color{green}  \mathbb{E}[u_t(X_t | Z) \mid X_t = x].
 $$
 
+$$\color{black}{\text{Theorem 3}} $$ : Under some assumption, If $$ u_t(x|z) $$ generates $$ p_t(\cdot|z) $$,   
+then marginal velocity field $$ u_t $$ generates marginal probability path $$ p_t $$ !
+
 (증명 생략)
 
-**결론:  marginal velocity field $$ u_t $$는 marginal probability path $$ p_t $$ generate !**
-
-
 ### 4.5. Flow Matching loss
-![fig2c](/posts/20241211_FM_guide/fig2c.png){: width="800" height="300"}
+![fig2c](/posts/20241211_FM_guide/fig2c.png){: width="800" height="300"}
 > 한 줄 요약.
 > $$ \nabla_\theta \mathcal{L}_{FM}(\theta) = \nabla_\theta \mathcal{L}_{CFM}(\theta). $$
 
 
-자 지금까지 target velocity field $$ u_t $$, 이를 이용해 probability path,$$ p_t $$를 만들었습니다만...
+자 지금까지 target velocity field $$ u_t $$, 이를 이용해 probability path, $$ p_t $$를 만들었습니다만...  
 $$ u_t^\theta $$를 학습하기 위해서는 tractable한 **loss function**을 정의해야 합니다.
 
 - **Flow matching loss** : 
@@ -199,18 +191,18 @@ $$
 </details>
 
 
-### 4.6. Solving conditional generation with conditional flows (핵심!!)
+### 4.6. Solving conditional generation with conditional flows (핵심!)
  
  자... 지금까지 우리는 flow model $$ u_t^\theta $$을 학습하기 위해 
  1. Conditional probability path 찾아서 B.C 과함께 **marginal probability path** 구함. (4.2)
  2. conditional probability path를 generate하는 **Conditional velocity fields** 유도. (4.3, 4.4)
- 3. **CFM loss**로 training. (4.5)
+ 3. **CFM loss** 정의. (4.5)
 
 이번 section에서는 1번과 2번, 즉, conditional probability paths and velocity fields를 design 하는 방법에 대해 살펴봅니다.
 
 > 한 줄 요약.
 >  Conditional flow, $$ \psi_t(\cdot|x_1) $$
-를 이용해서 conditional path와 대응하는 velocity field 찾는 과정을 간단히!!
+를 이용해서 conditional path와 대응하는 velocity field 찾는 과정을 간단히!
 
 1. B.C. 를 만족하는 flow model 
 $$ X_{t|1} $$를 정의하고 
@@ -293,8 +285,8 @@ Conditional flows를 위한 새로운 **Marginalization Trick**을 소개합니�
 $$와 Marginal Velocity Field $$ u_t(x) $$를 **생성합니다**.
 -   이를 통해 Flow Matching 문제를 다양한 **조건화 방식**으로 해결할 수 있습니다.
 
-#### 4.6.3. 
-![fig11](/posts/20241211_FM_guide/fig11.png){: width="800" height="300"}
+#### 4.6.3. Conditional flows with other conditions
+![fig11](/posts/20241211_FM_guide/fig11.png){: width="800" height="300"}
 
 다양한 조건 $$ Z = X_1, X_0, (X_0, X_1)) $$ 에 따른 conditional flow 설계를 다룹니다. (여러가지 choice가 있지만 flow가 **diffeomorphism** 이라면 모두 **동일**하다고 합니다.)
 
@@ -441,7 +433,10 @@ $$
 이를 deterministic function으로 다음과 같이 쓸 수 있습니다.
 
 $$
-x_{1|t}(x) = \mathbb{E} \left[ X_1 \mid X_t = x \right] \quad \text{as the }\color{blue}  x_1  \text{-prediction (target)} \color{black} , \\
+x_{1|t}(x) = \mathbb{E} \left[ X_1 \mid X_t = x \right] \quad \text{as the }\color{blue}  x_1  \text{-prediction (target)} \color{black}
+$$
+
+$$
 x_{0|t}(x) = \mathbb{E} \left[ X_0 \mid X_t = x \right] \quad \text{as the } \color{red} x_0\text{-prediction (source)}\color{black}.
 $$
 
@@ -651,11 +646,9 @@ $$
 $$
 
 
-<details style="background-color: #f9f9f9; border: 1px solid #ccc; padding: 10px; border-radius: 1rem;">
-  <summary>Show More</summary>
-  <p>
-    <li><a href="/posts/Flow-matching-Guide1" style="color: black;">1편. Introduction + Quick tour </a></li>
-    <li><a href="/posts/Flow-matching-Guide2" style="color: black;">2편. Flow models</a></li>
-    <li><a href="/posts/Flow-matching-Guide3" style="color: black;"><b>3편. Flow Matching (Current Post)</b></a></li>
-  </p>
-</details>
+
+## 전체 포스팅
+
+- [1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)  
+- [2편, Flow Models](https://daemini.github.io/posts/Flow-matching-Guide2/)  
+- [3편, Flow Mathcing](https://daemini.github.io/posts/Flow-matching-Guide3/)  
