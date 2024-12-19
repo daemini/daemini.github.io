@@ -8,13 +8,16 @@ math: true
 date: 2024-12-11 20:10:00 +09:00
 categories: [Deep Learning, Generative Model]
 tags: [diffusion model, generative model, flow matching]     # TAG names should always be lowercase
-image: /posts/20241211_FM_guide/t2.png
+image: /posts/20241211_FM_guide/teaser2.jpg
 alt : Thumbnail
 author: Daemin
 ---
 
-## 이전 포스팅
-[1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)
+## 전체 포스팅
+
+- [1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)  
+- [2편, Flow Models](https://daemini.github.io/posts/Flow-matching-Guide2/)  
+- [3편, Flow Mathcing](https://daemini.github.io/posts/Flow-matching-Guide3/)  
 
 
 ## 3. Flow models
@@ -334,6 +337,8 @@ $$
 - Source sample에서 target sample을 계산하려면 **ODE** 를 Numerically 풀어야 함! 
 
 
-## 다음 포스팅
+## 전체 포스팅
 
-[3편, Flow Mathcing](https://daemini.github.io/posts/Flow-matching-Guide3/)
+- [1편, Quick tour](https://daemini.github.io/posts/Flow-matching-Guide1/)  
+- [2편, Flow Models](https://daemini.github.io/posts/Flow-matching-Guide2/)  
+- [3편, Flow Mathcing](https://daemini.github.io/posts/Flow-matching-Guide3/)  
