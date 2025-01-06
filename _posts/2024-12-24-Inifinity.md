@@ -1,5 +1,5 @@
 ﻿---
-title: "[Paper Reivew] Visual Autoregressive Modeling: Scalable Image Generation via Next-Scale Prediction"
+title: "[Paper Reivew] Infinity: Scaling Bitwise AutoRegressive Modeling for High-Resolution Image Synthesis"
 description: Flow matching의 comprehensive and self-contained reviewd 입니다.
 toc: true
 comments: true
